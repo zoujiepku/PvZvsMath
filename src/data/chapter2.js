@@ -8,7 +8,7 @@ export const chapter2Lesson = [
     title: 'Steve Bakes a Cake!',
     story: 'Steve baked a cake! He cuts it into 2 equal pieces. Each piece is one half of the cake.',
     fractionBar: { total: 2, filled: 1, label: '1/2' },
-    equation: '1/2',
+    equation: 'frac{1}{2}',
     highlight: 'One half means 1 piece out of 2!',
   },
   {
@@ -16,14 +16,14 @@ export const chapter2Lesson = [
     title: 'More Slices!',
     story: 'Now Steve cuts a cake into 4 equal pieces. Each piece is one quarter of the cake.',
     fractionBar: { total: 4, filled: 1, label: '1/4' },
-    equation: '1/4',
+    equation: 'frac{1}{4}',
     highlight: 'One quarter means 1 piece out of 4!',
   },
   {
     type: 'teach',
     title: 'Parts of a Fraction',
     story: 'A fraction has two numbers. The top number is how many pieces you have. The bottom number is how many total pieces.',
-    equation: 'numerator / denominator',
+    equation: 'frac{numerator}{denominator}',
     highlight: 'Top = what you have. Bottom = total pieces!',
   },
   {
@@ -32,9 +32,9 @@ export const chapter2Lesson = [
     story: 'Steve cuts a cake into 3 equal pieces. He eats 1 piece.',
     fractionBar: { total: 3, filled: 1, label: '?' },
     question: 'What fraction did Steve eat?',
-    choices: ['1/3', '1/2', '2/3'],
+    choices: ['frac{1}{3}', 'frac{1}{2}', 'frac{2}{3}'],
     correctIndex: 0,
-    explanation: '1 piece out of 3 = 1/3!',
+    explanation: '1 piece out of 3 = frac{1}{3}!',
   },
 
   // --- Section B: Halves, Thirds, Quarters ---
@@ -49,13 +49,13 @@ export const chapter2Lesson = [
   {
     type: 'teach',
     title: 'Splitting Iron!',
-    story: 'Steve splits 6 iron bars into 3 equal groups. Each group is 1/3 of the total.',
+    story: 'Steve splits 6 iron bars into 3 equal groups. Each group is frac{1}{3} of the total.',
     groups: [
       { emoji: '🪨', count: 2, label: 'Group 1' },
       { emoji: '🪨', count: 2, label: 'Group 2' },
       { emoji: '🪨', count: 2, label: 'Group 3' },
     ],
-    equation: '1/3 of 6 = 2',
+    equation: 'frac{1}{3} of 6 = 2',
     highlight: '2 iron bars in each group!',
   },
   {
@@ -73,7 +73,7 @@ export const chapter2Lesson = [
     title: 'Cookie Time!',
     story: 'Steve baked 10 cookies.',
     fractionBar: { total: 10, filled: 5, label: '1/2 of 10 = ?' },
-    question: 'What is 1/2 of 10 cookies?',
+    question: 'What is frac{1}{2} of 10 cookies?',
     choices: ['4', '5', '6'],
     correctIndex: 1,
     explanation: 'Half of 10 = 5 cookies!',
@@ -83,18 +83,18 @@ export const chapter2Lesson = [
   {
     type: 'teach',
     title: 'Who Has More Cake?',
-    story: 'Steve has 1/2 of a cake. Alex has 1/4 of a cake. Who has more?',
+    story: 'Steve has frac{1}{2} of a cake. Alex has frac{1}{4} of a cake. Who has more?',
     fractionCompare: {
       left: { total: 2, filled: 1, label: '1/2' },
       right: { total: 4, filled: 1, label: '1/4' },
     },
-    highlight: '1/2 is bigger than 1/4! Steve has more!',
+    highlight: 'frac{1}{2} is bigger than frac{1}{4}! Steve has more!',
   },
   {
     type: 'teach',
     title: 'The Comparing Rule!',
     story: 'When the top number is the same, the smaller bottom number means a bigger piece!',
-    equation: '1/2 > 1/3 > 1/4',
+    equation: 'frac{1}{2} > frac{1}{3} > frac{1}{4}',
     highlight: 'Fewer slices = bigger pieces!',
   },
   {
@@ -105,10 +105,10 @@ export const chapter2Lesson = [
       left: { total: 3, filled: 1, label: '1/3' },
       right: { total: 4, filled: 1, label: '1/4' },
     },
-    question: 'Which is bigger: 1/3 or 1/4?',
-    choices: ['1/3', '1/4', 'They are the same'],
+    question: 'Which is bigger: frac{1}{3} or frac{1}{4}?',
+    choices: ['frac{1}{3}', 'frac{1}{4}', 'They are the same'],
     correctIndex: 0,
-    explanation: '1/3 is bigger! 3 slices makes bigger pieces than 4 slices.',
+    explanation: 'frac{1}{3} is bigger! 3 slices makes bigger pieces than 4 slices.',
   },
   {
     type: 'interactive',
@@ -118,47 +118,47 @@ export const chapter2Lesson = [
       left: { total: 4, filled: 2, label: '2/4' },
       right: { total: 4, filled: 3, label: '3/4' },
     },
-    question: 'Which is bigger: 2/4 or 3/4?',
-    choices: ['2/4', '3/4', 'They are the same'],
+    question: 'Which is bigger: frac{2}{4} or frac{3}{4}?',
+    choices: ['frac{2}{4}', 'frac{3}{4}', 'They are the same'],
     correctIndex: 1,
-    explanation: '3/4 is bigger! More pieces = more cake!',
+    explanation: 'frac{3}{4} is bigger! More pieces = more cake!',
   },
 
   // --- Section D: Adding Fractions (same denominator) ---
   {
     type: 'teach',
     title: 'Adding Cake Slices!',
-    story: 'Steve ate 1/4 of the cake for breakfast and 2/4 for lunch.',
+    story: 'Steve ate frac{1}{4} of the cake for breakfast and frac{2}{4} for lunch.',
     fractionBar: { total: 4, filled: 3, label: '1/4 + 2/4 = 3/4' },
-    equation: '1/4 + 2/4 = 3/4',
+    equation: 'frac{1}{4} + frac{2}{4} = frac{3}{4}',
     highlight: 'Just add the top numbers! 1 + 2 = 3!',
   },
   {
     type: 'teach',
     title: 'The Adding Rule!',
     story: 'When the bottom numbers are the same, just add the top numbers! The bottom number stays the same.',
-    equation: 'a/n + b/n = (a+b)/n',
+    equation: 'frac{a}{n} + frac{b}{n} = frac{a+b}{n}',
     highlight: 'Same bottom? Add the tops!',
   },
   {
     type: 'interactive',
     title: 'Add These Fractions!',
-    story: 'Steve ate 1/3 of the pie. Alex ate 1/3 of the pie.',
+    story: 'Steve ate frac{1}{3} of the pie. Alex ate frac{1}{3} of the pie.',
     fractionBar: { total: 3, filled: 2, label: '1/3 + 1/3 = ?' },
-    question: '1/3 + 1/3 = ?',
-    choices: ['2/3', '1/3', '2/6'],
+    question: 'frac{1}{3} + frac{1}{3} = ?',
+    choices: ['frac{2}{3}', 'frac{1}{3}', 'frac{2}{6}'],
     correctIndex: 0,
-    explanation: '1 + 1 = 2 on top, bottom stays 3. Answer: 2/3!',
+    explanation: '1 + 1 = 2 on top, bottom stays 3. Answer: frac{2}{3}!',
   },
   {
     type: 'interactive',
     title: 'One More!',
-    story: 'Steve found 2/5 of the treasure. Alex found 1/5 more.',
+    story: 'Steve found frac{2}{5} of the treasure. Alex found frac{1}{5} more.',
     fractionBar: { total: 5, filled: 3, label: '2/5 + 1/5 = ?' },
-    question: '2/5 + 1/5 = ?',
-    choices: ['3/5', '3/10', '2/5'],
+    question: 'frac{2}{5} + frac{1}{5} = ?',
+    choices: ['frac{3}{5}', 'frac{3}{10}', 'frac{2}{5}'],
     correctIndex: 0,
-    explanation: '2 + 1 = 3 on top, bottom stays 5. Answer: 3/5!',
+    explanation: '2 + 1 = 3 on top, bottom stays 5. Answer: frac{3}{5}!',
   },
 
   // --- Section E: Fractions Equal to 1 Whole ---
@@ -167,18 +167,18 @@ export const chapter2Lesson = [
     title: 'The Whole Cake!',
     story: 'If Steve eats all 4 slices of a 4-slice cake, he ate the whole thing!',
     fractionBar: { total: 4, filled: 4, label: '4/4 = 1 whole!' },
-    equation: '4/4 = 1',
+    equation: 'frac{4}{4} = 1',
     highlight: 'When top and bottom are the same, it equals 1 whole!',
   },
   {
     type: 'interactive',
     title: 'Make it Whole!',
-    story: 'Steve has 2/3 of a pie. He finds 1/3 more.',
+    story: 'Steve has frac{2}{3} of a pie. He finds frac{1}{3} more.',
     fractionBar: { total: 3, filled: 3, label: '2/3 + 1/3 = ?' },
-    question: '2/3 + 1/3 = ?',
-    choices: ['3/3 = 1 whole!', '2/3', '1/3'],
+    question: 'frac{2}{3} + frac{1}{3} = ?',
+    choices: ['frac{3}{3} = 1 whole!', 'frac{2}{3}', 'frac{1}{3}'],
     correctIndex: 0,
-    explanation: '2 + 1 = 3 on top. 3/3 = 1 whole pie!',
+    explanation: '2 + 1 = 3 on top. frac{3}{3} = 1 whole pie!',
   },
 ]
 
@@ -186,13 +186,13 @@ export const chapter2Quiz = [
   {
     prompt: 'A cake is cut into 4 pieces. Steve eats 1. What fraction did he eat?',
     emoji: '🍰',
-    choices: ['1/4', '1/2', '1/3'],
+    choices: ['frac{1}{4}', 'frac{1}{2}', 'frac{1}{3}'],
     correctIndex: 0,
-    explanation: '1 piece out of 4 total = 1/4!',
+    explanation: '1 piece out of 4 total = frac{1}{4}!',
     law: 'Identify Fractions',
   },
   {
-    prompt: 'What is 1/2 of 8 diamonds?',
+    prompt: 'What is frac{1}{2} of 8 diamonds?',
     emoji: '💎',
     choices: ['3', '4', '5'],
     correctIndex: 1,
@@ -200,25 +200,25 @@ export const chapter2Quiz = [
     law: 'Fraction of a Group',
   },
   {
-    prompt: 'Which is bigger: 1/2 or 1/3?',
+    prompt: 'Which is bigger: frac{1}{2} or frac{1}{3}?',
     emoji: '🍰',
-    choices: ['1/2', '1/3', 'They are the same'],
+    choices: ['frac{1}{2}', 'frac{1}{3}', 'They are the same'],
     correctIndex: 0,
-    explanation: '1/2 is bigger! Fewer slices = bigger pieces!',
+    explanation: 'frac{1}{2} is bigger! Fewer slices = bigger pieces!',
     law: 'Comparing Fractions',
   },
   {
-    prompt: '1/4 + 2/4 = ?',
+    prompt: 'frac{1}{4} + frac{2}{4} = ?',
     emoji: '🍰',
-    choices: ['2/4', '3/4', '3/8'],
+    choices: ['frac{2}{4}', 'frac{3}{4}', 'frac{3}{8}'],
     correctIndex: 1,
-    explanation: 'Add the tops: 1+2=3. Bottom stays 4. Answer: 3/4!',
+    explanation: 'Add the tops: 1+2=3. Bottom stays 4. Answer: frac{3}{4}!',
     law: 'Adding Fractions',
   },
   {
-    prompt: '3/3 = ?',
+    prompt: 'frac{3}{3} = ?',
     emoji: '🍰',
-    choices: ['1/3', '1 whole', '3'],
+    choices: ['frac{1}{3}', '1 whole', '3'],
     correctIndex: 1,
     explanation: 'When top and bottom are the same, it equals 1 whole!',
     law: 'Whole Fractions',
@@ -257,7 +257,7 @@ const problemGenerators = [
         { text: String(wrong2), correct: false },
       ])
       return {
-        prompt: `What is 1/${denominator} of ${total}?`,
+        prompt: `What is frac{1}{${denominator}} of ${total}?`,
         emoji: '💎',
         choices: choices.map((c) => c.text),
         correctIndex: choices.findIndex((c) => c.correct),
@@ -275,14 +275,14 @@ const problemGenerators = [
       do {
         b = denoms[randomInt(0, denoms.length - 1)]
       } while (b === a)
-      const bigger = a < b ? `1/${a}` : `1/${b}`
+      const bigger = a < b ? `frac{1}{${a}}` : `frac{1}{${b}}`
       const choices = shuffleArray([
-        { text: `1/${a}`, correct: a < b },
-        { text: `1/${b}`, correct: b < a },
+        { text: `frac{1}{${a}}`, correct: a < b },
+        { text: `frac{1}{${b}}`, correct: b < a },
         { text: 'They are the same', correct: false },
       ])
       return {
-        prompt: `Which is bigger: 1/${a} or 1/${b}?`,
+        prompt: `Which is bigger: frac{1}{${a}} or frac{1}{${b}}?`,
         emoji: '🍰',
         choices: choices.map((c) => c.text),
         correctIndex: choices.findIndex((c) => c.correct),
@@ -298,16 +298,16 @@ const problemGenerators = [
       const a = randomInt(1, denom - 1)
       const b = randomInt(1, denom - a)
       const sum = a + b
-      const answerText = sum === denom ? `${sum}/${denom} = 1 whole` : `${sum}/${denom}`
-      const wrong1 = `${sum}/${denom * 2}`
-      const wrong2 = `${a}/${denom}`
+      const answerText = sum === denom ? `frac{${sum}}{${denom}} = 1 whole` : `frac{${sum}}{${denom}}`
+      const wrong1 = `frac{${sum}}{${denom * 2}}`
+      const wrong2 = `frac{${a}}{${denom}}`
       const choices = shuffleArray([
         { text: answerText, correct: true },
         { text: wrong1, correct: false },
         { text: wrong2, correct: false },
       ])
       return {
-        prompt: `${a}/${denom} + ${b}/${denom} = ?`,
+        prompt: `frac{${a}}{${denom}} + frac{${b}}{${denom}} = ?`,
         emoji: '🍰',
         choices: choices.map((c) => c.text),
         correctIndex: choices.findIndex((c) => c.correct),
@@ -323,9 +323,9 @@ const problemGenerators = [
       const numer = randomInt(1, denom - 1)
       const items = ['cake slices', 'pie pieces', 'cookie chunks']
       const item = items[randomInt(0, items.length - 1)]
-      const answer = `${numer}/${denom}`
-      const wrong1 = `${numer}/${denom + 1}`
-      const wrong2 = `${denom}/${numer}`
+      const answer = `frac{${numer}}{${denom}}`
+      const wrong1 = `frac{${numer}}{${denom + 1}}`
+      const wrong2 = `frac{${denom}}{${numer}}`
       const choices = shuffleArray([
         { text: answer, correct: true },
         { text: wrong1, correct: false },

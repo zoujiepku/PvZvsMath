@@ -23,6 +23,9 @@ function Home({ setCurrentView }) {
         <button className="minecraft-button" onClick={() => setCurrentView('chapter5')}>
           Chapter 5: Decimal Operations
         </button>
+        <button className="minecraft-button" onClick={() => setCurrentView('chapter6')}>
+          Chapter 6: Exponents & Powers
+        </button>
       </div>
     </div>
   )

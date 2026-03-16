@@ -1,11 +1,12 @@
 import { EmojiGroup, EmojiGrid, EmojiVisual } from './EmojiGroup'
 import { FractionBar, FractionCompare } from './FractionBar'
+import MathText from './MathText'
 
 function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
   return (
     <div className="lesson-step content-box">
       <h2>{step.title}</h2>
-      <p>{step.story}</p>
+      <p><MathText text={step.story} /></p>
 
       {step.visual && <EmojiVisual visual={step.visual} />}
 
@@ -33,13 +34,13 @@ function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
         </div>
       )}
 
-      {step.equation && <div className="equation">{step.equation}</div>}
+      {step.equation && <div className="equation"><MathText text={step.equation} /></div>}
 
       {step.highlight && <p className="highlight">{step.highlight}</p>}
 
       {step.type === 'interactive' && (
         <>
-          <p className="question-prompt">{step.question}</p>
+          <p className="question-prompt"><MathText text={step.question} /></p>
           <div className="choices">
             {step.choices.map((choice, i) => {
               const isCorrect = selectedAnswer === step.correctIndex
@@ -58,7 +59,7 @@ function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
                   onClick={() => !locked && onAnswer(i)}
                   disabled={locked}
                 >
-                  {choice}
+                  <MathText text={choice} />
                 </button>
               )
             })}
@@ -69,7 +70,7 @@ function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
                 {selectedAnswer === step.correctIndex ? 'Correct!' : 'Not quite! Try again!'}
               </p>
               {selectedAnswer === step.correctIndex && step.explanation && (
-                <p className="feedback-explanation">{step.explanation}</p>
+                <p className="feedback-explanation"><MathText text={step.explanation} /></p>
               )}
             </div>
           )}

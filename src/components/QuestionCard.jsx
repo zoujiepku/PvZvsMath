@@ -1,10 +1,12 @@
+import MathText from './MathText'
+
 function QuestionCard({ question, onAnswer, selectedAnswer, showResult }) {
   return (
     <div className="question-card content-box">
       {question.emoji && (
         <div className="question-emoji">{question.emoji}</div>
       )}
-      <p className="question-prompt">{question.prompt || question.question}</p>
+      <p className="question-prompt"><MathText text={question.prompt || question.question} /></p>
 
       <div className="choices">
         {question.choices.map((choice, i) => {
@@ -23,7 +25,7 @@ function QuestionCard({ question, onAnswer, selectedAnswer, showResult }) {
               onClick={() => !showResult && onAnswer(i)}
               disabled={showResult}
             >
-              {choice}
+              <MathText text={choice} />
             </button>
           )
         })}
@@ -35,7 +37,7 @@ function QuestionCard({ question, onAnswer, selectedAnswer, showResult }) {
             {selectedAnswer === question.correctIndex ? 'Correct!' : 'Not quite!'}
           </p>
           {question.explanation && (
-            <p className="feedback-explanation">{question.explanation}</p>
+            <p className="feedback-explanation"><MathText text={question.explanation} /></p>
           )}
         </div>
       )}
