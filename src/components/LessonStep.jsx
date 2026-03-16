@@ -42,19 +42,21 @@ function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
           <p className="question-prompt">{step.question}</p>
           <div className="choices">
             {step.choices.map((choice, i) => {
+              const isCorrect = selectedAnswer === step.correctIndex
+              const locked = feedback && isCorrect
               let className = 'minecraft-button choice-button'
               if (feedback && selectedAnswer === i) {
                 className += i === step.correctIndex ? ' choice-correct' : ' choice-wrong'
               }
-              if (feedback && i === step.correctIndex) {
+              if (locked && i === step.correctIndex) {
                 className += ' choice-correct'
               }
               return (
                 <button
                   key={i}
                   className={className}
-                  onClick={() => !feedback && onAnswer(i)}
-                  disabled={!!feedback}
+                  onClick={() => !locked && onAnswer(i)}
+                  disabled={locked}
                 >
                   {choice}
                 </button>
@@ -64,9 +66,11 @@ function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
           {feedback && (
             <div className={`feedback ${selectedAnswer === step.correctIndex ? 'feedback-correct' : 'feedback-wrong'}`}>
               <p className="feedback-text">
-                {selectedAnswer === step.correctIndex ? 'Correct!' : 'Not quite!'}
+                {selectedAnswer === step.correctIndex ? 'Correct!' : 'Not quite! Try again!'}
               </p>
-              {step.explanation && <p className="feedback-explanation">{step.explanation}</p>}
+              {selectedAnswer === step.correctIndex && step.explanation && (
+                <p className="feedback-explanation">{step.explanation}</p>
+              )}
             </div>
           )}
         </>

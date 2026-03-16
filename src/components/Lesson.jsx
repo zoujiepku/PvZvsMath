@@ -11,7 +11,8 @@ function Lesson({ lessonData, setCurrentView, returnView }) {
 
   const step = lessonData[currentStep]
   const isInteractive = step?.type === 'interactive'
-  const canAdvance = !isInteractive || feedback
+  const isCorrect = isInteractive && selectedAnswer === step?.correctIndex
+  const canAdvance = !isInteractive || isCorrect
 
   function handleAnswer(choiceIndex) {
     setSelectedAnswer(choiceIndex)
@@ -46,9 +47,29 @@ function Lesson({ lessonData, setCurrentView, returnView }) {
     )
   }
 
+  function jumpTo(index) {
+    setCurrentStep(index)
+    setSelectedAnswer(null)
+    setFeedback(false)
+    setCompleted(false)
+  }
+
   return (
     <div className="lesson">
-      <ProgressBar current={currentStep} total={lessonData.length} />
+      <div className="lesson-top-bar">
+        <ProgressBar current={currentStep} total={lessonData.length} />
+        <select
+          className="lesson-jump"
+          value={currentStep}
+          onChange={(e) => jumpTo(Number(e.target.value))}
+        >
+          {lessonData.map((s, i) => (
+            <option key={i} value={i}>
+              {i + 1}. {s.title}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <LessonStep
         step={step}
@@ -58,17 +79,17 @@ function Lesson({ lessonData, setCurrentView, returnView }) {
       />
 
       <div className="lesson-nav">
-        {canAdvance && (
-          <button className="minecraft-button" onClick={handleNext}>
-            {currentStep < lessonData.length - 1 ? 'Next' : 'Finish!'}
-          </button>
-        )}
         <button
           className="minecraft-button secondary"
           onClick={() => setCurrentView(returnView)}
         >
           Back
         </button>
+        {canAdvance && (
+          <button className="minecraft-button" onClick={handleNext}>
+            {currentStep < lessonData.length - 1 ? 'Next' : 'Finish!'}
+          </button>
+        )}
       </div>
     </div>
   )
