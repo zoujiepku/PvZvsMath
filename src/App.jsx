@@ -10,6 +10,7 @@ import ChapterSix from './components/ChapterSix'
 import Lesson from './components/Lesson'
 import Quiz from './components/Quiz'
 import Practice from './components/Practice'
+import { Peashooter, Zombie } from './components/characters'
 import { chapter1Lesson, chapter1Quiz, chapter1PracticeConfig, generatePracticeProblem as generateCh1 } from './data/chapter1'
 import { chapter2Lesson, chapter2Quiz, chapter2PracticeConfig, generatePracticeProblem as generateCh2 } from './data/chapter2'
 import { chapter3Lesson, chapter3Quiz, chapter3PracticeConfig, generatePracticeProblem as generateCh3 } from './data/chapter3'
@@ -32,7 +33,11 @@ function App() {
   return (
     <div className="app">
       <header className="app-header" onClick={() => setCurrentView('home')} style={{ cursor: 'pointer' }}>
-        <h1>PvZ vs Math</h1>
+        <div className="header-row">
+          <Peashooter size={36} animate />
+          <h1>PvZ vs Math</h1>
+          <Zombie size={36} animate />
+        </div>
         <p className="subtitle">Defend the Lawn with Math!</p>
       </header>
 

@@ -1,0 +1,6 @@
+export { default as Peashooter } from './Peashooter'
+export { default as Sunflower } from './Sunflower'
+export { default as Zombie } from './Zombie'
+export { default as WallNut } from './WallNut'
+export { default as Sun } from './Sun'
+export { default as CrazyDave } from './CrazyDave'

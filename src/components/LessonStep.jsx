@@ -2,12 +2,25 @@ import { EmojiGroup, EmojiGrid, EmojiVisual } from './EmojiGroup'
 import { FractionBar, FractionCompare } from './FractionBar'
 import CraftingTable from './CraftingTable'
 import MathText from './MathText'
+import { CrazyDave, Peashooter, Zombie } from './characters'
 
 function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
+  const isTeach = step.type === 'teach' || !step.type
+
   return (
     <div className="lesson-step content-box">
       <h2>{step.title}</h2>
-      <p><MathText text={step.story} /></p>
+
+      {isTeach ? (
+        <div className="dave-speech">
+          <CrazyDave size={48} animate />
+          <div className="speech-bubble">
+            <p><MathText text={step.story} /></p>
+          </div>
+        </div>
+      ) : (
+        <p><MathText text={step.story} /></p>
+      )}
 
       {step.visual && <EmojiVisual visual={step.visual} />}
 
@@ -76,9 +89,15 @@ function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
           </div>
           {feedback && (
             <div className={`feedback ${selectedAnswer === step.correctIndex ? 'feedback-correct' : 'feedback-wrong'}`}>
-              <p className="feedback-text">
-                {selectedAnswer === step.correctIndex ? 'Correct!' : 'Not quite! Try again!'}
-              </p>
+              <div className="feedback-with-character">
+                {selectedAnswer === step.correctIndex
+                  ? <Peashooter size={32} animate />
+                  : <Zombie size={32} animate />
+                }
+                <p className="feedback-text">
+                  {selectedAnswer === step.correctIndex ? 'Correct!' : 'Not quite! Try again!'}
+                </p>
+              </div>
               {selectedAnswer === step.correctIndex && step.explanation && (
                 <p className="feedback-explanation"><MathText text={step.explanation} /></p>
               )}

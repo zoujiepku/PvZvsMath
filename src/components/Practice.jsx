@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import QuestionCard from './QuestionCard'
 import ScoreScreen from './ScoreScreen'
+import { Sun, Sunflower } from './characters'
 
 function Practice({ practiceConfig, generateFn, setCurrentView, returnView }) {
   const generate = useCallback(
@@ -60,16 +61,20 @@ function Practice({ practiceConfig, generateFn, setCurrentView, returnView }) {
     )
   }
 
-  let streakMessage = ''
-  if (streak >= 10) streakMessage = 'LEGENDARY! 🌻☀️🌻'
-  else if (streak >= 5) streakMessage = 'Sun power overload! ☀️☀️'
-  else if (streak >= 3) streakMessage = 'Nice combo! ☀️'
+  let streakDisplay = null
+  if (streak >= 10) {
+    streakDisplay = <><Sunflower size={24} animate /> <Sun size={20} animate /> LEGENDARY! <Sun size={20} animate /> <Sunflower size={24} animate /></>
+  } else if (streak >= 5) {
+    streakDisplay = <>Sun power overload! <Sun size={20} animate /> <Sun size={20} animate /></>
+  } else if (streak >= 3) {
+    streakDisplay = <>Nice combo! <Sun size={20} animate /></>
+  }
 
   return (
     <div className="practice">
       {streak > 0 && (
         <div className="streak-live">
-          Streak: {streak} {streakMessage}
+          Streak: {streak} {streakDisplay}
         </div>
       )}
 

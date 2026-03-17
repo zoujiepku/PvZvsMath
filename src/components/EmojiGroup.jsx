@@ -1,9 +1,15 @@
+import { getCharacterForEmoji } from './characters/emojiMap'
+
 function EmojiGroup({ emoji, count, label }) {
+  const Char = getCharacterForEmoji(emoji)
+
   return (
     <div className="emoji-group">
       <div className="emoji-row">
         {Array.from({ length: count }, (_, i) => (
-          <span key={i} className="emoji-item">{emoji}</span>
+          <span key={i} className="emoji-item">
+            {Char ? <Char size={24} /> : emoji}
+          </span>
         ))}
       </div>
       {label && <span className="emoji-label">{label}</span>}
@@ -12,12 +18,16 @@ function EmojiGroup({ emoji, count, label }) {
 }
 
 function EmojiGrid({ emoji, rows, cols }) {
+  const Char = getCharacterForEmoji(emoji)
+
   return (
     <div className="emoji-grid">
       {Array.from({ length: rows }, (_, r) => (
         <div key={r} className="emoji-row">
           {Array.from({ length: cols }, (_, c) => (
-            <span key={c} className="emoji-item">{emoji}</span>
+            <span key={c} className="emoji-item">
+              {Char ? <Char size={24} /> : emoji}
+            </span>
           ))}
         </div>
       ))}

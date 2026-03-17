@@ -1,7 +1,12 @@
+import { Zombie, CrazyDave, Peashooter } from './characters'
+
 function ChapterSix({ setCurrentView }) {
   return (
     <div className="chapter-hub">
       <div className="content-box">
+        <div className="chapter-mascot">
+          <Zombie size={64} animate />
+        </div>
         <h2>Chapter 6: Exponents & Powers</h2>
         <p>Unlock the power of tiny numbers!</p>
         <p>Cherry Bomb blasts, growth rates, and power multipliers await!</p>
@@ -12,19 +17,19 @@ function ChapterSix({ setCurrentView }) {
           className="minecraft-button"
           onClick={() => setCurrentView('chapter6-lesson')}
         >
-          Lesson
+          <span className="btn-with-icon"><CrazyDave size={20} /> Lesson</span>
         </button>
         <button
           className="minecraft-button info"
           onClick={() => setCurrentView('chapter6-quiz')}
         >
-          Quiz
+          <span className="btn-with-icon"><Zombie size={20} /> Quiz</span>
         </button>
         <button
           className="minecraft-button secondary"
           onClick={() => setCurrentView('chapter6-practice')}
         >
-          Practice
+          <span className="btn-with-icon"><Peashooter size={20} /> Practice</span>
         </button>
         <button
           className="minecraft-button secondary"
