@@ -4,7 +4,7 @@ function ChapterFour({ setCurrentView }) {
       <div className="content-box">
         <h2>Chapter 4: Decimals</h2>
         <p>Learn about numbers with a dot in them!</p>
-        <p>Decimals are everywhere, especially with money.</p>
+        <p>Decimals power up your plant damage calculations!</p>
       </div>
 
       <div className="chapter-actions">

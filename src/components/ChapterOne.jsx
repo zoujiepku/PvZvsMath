@@ -4,7 +4,7 @@ function ChapterOne({ setCurrentView }) {
       <div className="content-box">
         <h2>Chapter 1: Math Laws</h2>
         <p>Learn the secret rules of adding and multiplying!</p>
-        <p>Steve will show you that math has cool shortcuts.</p>
+        <p>Your plants need these math shortcuts to fight zombies!</p>
       </div>
 
       <div className="chapter-actions">

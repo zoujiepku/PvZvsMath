@@ -4,7 +4,7 @@ function ChapterFive({ setCurrentView }) {
       <div className="content-box">
         <h2>Chapter 5: Decimal Operations</h2>
         <p>Add, subtract, and multiply decimals!</p>
-        <p>Use decimals to solve money problems like a pro.</p>
+        <p>Calculate battle damage like a plant commander!</p>
       </div>
 
       <div className="chapter-actions">

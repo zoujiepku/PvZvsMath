@@ -3,17 +3,17 @@ function ScoreScreen({ title, score, total, onContinue, onRetry, message, streak
 
   let emoji, encouragement
   if (percent === 100) {
-    emoji = '💎💎💎'
-    encouragement = 'PERFECT! You are a Minecraft Math Master!'
+    emoji = '🌻🌻🌻'
+    encouragement = 'PERFECT! The lawn is completely defended!'
   } else if (percent >= 80) {
-    emoji = '💎💎'
-    encouragement = 'Amazing work! Almost perfect!'
+    emoji = '🌻🌻'
+    encouragement = 'Amazing defense! The zombies barely got through!'
   } else if (percent >= 60) {
-    emoji = '💎'
-    encouragement = 'Good job! You are learning!'
+    emoji = '🌻'
+    encouragement = 'Good defense! Keep planting!'
   } else {
-    emoji = '⛏️'
-    encouragement = 'Great effort! Practice makes perfect!'
+    emoji = '🧟'
+    encouragement = 'The zombies got through! Practice and try again!'
   }
 
   return (

@@ -4,7 +4,7 @@ function ChapterThree({ setCurrentView }) {
       <div className="content-box">
         <h2>Chapter 3: More Fractions</h2>
         <p>Level up your fraction skills!</p>
-        <p>Learn equivalent fractions, simplifying, mixed numbers, multiplying, and more.</p>
+        <p>Master advanced fractions to build the ultimate plant strategy!</p>
       </div>
 
       <div className="chapter-actions">

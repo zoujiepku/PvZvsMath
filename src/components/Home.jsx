@@ -2,9 +2,9 @@ function Home({ setCurrentView }) {
   return (
     <div className="home">
       <div className="content-box">
-        <h2>Welcome, Miner!</h2>
-        <p>Get ready to learn math with Steve and Alex!</p>
-        <p>Pick a chapter to start your adventure:</p>
+        <h2>Welcome, Plant Commander!</h2>
+        <p>Get ready to defend the lawn with math!</p>
+        <p>Pick a chapter to power up your plants:</p>
       </div>
 
       <div className="chapter-list">

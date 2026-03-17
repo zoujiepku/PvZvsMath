@@ -61,9 +61,9 @@ function Practice({ practiceConfig, generateFn, setCurrentView, returnView }) {
   }
 
   let streakMessage = ''
-  if (streak >= 10) streakMessage = 'LEGENDARY! 💎🔥💎'
-  else if (streak >= 5) streakMessage = 'You are on fire! 🔥🔥'
-  else if (streak >= 3) streakMessage = 'Nice streak! 🔥'
+  if (streak >= 10) streakMessage = 'LEGENDARY! 🌻☀️🌻'
+  else if (streak >= 5) streakMessage = 'Sun power overload! ☀️☀️'
+  else if (streak >= 3) streakMessage = 'Nice combo! ☀️'
 
   return (
     <div className="practice">

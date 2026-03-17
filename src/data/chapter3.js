@@ -6,7 +6,7 @@ export const chapter3Lesson = [
   {
     type: 'teach',
     title: 'Same Amount, Different Slices!',
-    story: 'Steve cuts a cake in half. Alex cuts the same size cake into 4 pieces and takes 2. They have the same amount!',
+    story: 'Dave cuts a pizza in half. Penny cuts the same size pizza into 4 slices and takes 2. They have the same amount!',
     fractionCompare: {
       left: { total: 2, filled: 1, label: '1/2' },
       right: { total: 4, filled: 2, label: '2/4' },
@@ -44,7 +44,7 @@ export const chapter3Lesson = [
   {
     type: 'interactive',
     title: 'Simplify to Match!',
-    story: 'Alex says frac{2}{4} is the same as another simpler fraction.',
+    story: 'Penny says frac{2}{4} is the same as another simpler fraction.',
     fractionCompare: {
       left: { total: 4, filled: 2, label: '2/4' },
       right: { total: 2, filled: 1, label: '1/2' },
@@ -52,14 +52,14 @@ export const chapter3Lesson = [
     question: 'Which fraction equals frac{2}{4}?',
     choices: ['frac{1}{2}', 'frac{1}{3}', 'frac{3}{4}'],
     correctIndex: 0,
-    explanation: 'frac{2}{4} = frac{1}{2}. Same amount of cake!',
+    explanation: 'frac{2}{4} = frac{1}{2}. Same amount of pizza!',
   },
 
   // --- Section B: Simplifying Fractions ---
   {
     type: 'teach',
     title: 'Make It Simpler!',
-    story: 'Steve has frac{4}{8} of a cake. Can we write this in a simpler way? Both 4 and 8 can be divided by 4!',
+    story: 'Dave has frac{4}{8} of a pizza. Can we write this in a simpler way? Both 4 and 8 can be divided by 4!',
     fractionCompare: {
       left: { total: 8, filled: 4, label: '4/8' },
       right: { total: 2, filled: 1, label: '1/2' },
@@ -77,7 +77,7 @@ export const chapter3Lesson = [
   {
     type: 'interactive',
     title: 'You Simplify!',
-    story: 'Steve has frac{2}{4} of a pie. What is the simpler way to write this?',
+    story: 'Dave has frac{2}{4} of a pizza. What is the simpler way to write this?',
     fractionCompare: {
       left: { total: 4, filled: 2, label: '2/4' },
       right: { total: 2, filled: 1, label: '?' },
@@ -90,7 +90,7 @@ export const chapter3Lesson = [
   {
     type: 'interactive',
     title: 'One More!',
-    story: 'Alex has frac{3}{6} of a cookie. Simplify it!',
+    story: 'Penny has frac{3}{6} of a sun pack. Simplify it!',
     fractionCompare: {
       left: { total: 6, filled: 3, label: '3/6' },
       right: { total: 2, filled: 1, label: '?' },
@@ -105,57 +105,88 @@ export const chapter3Lesson = [
   {
     type: 'teach',
     title: 'More Than One Whole!',
-    story: 'Steve is really hungry! He ate 3 slices of a cake that only has 2 slices. That is frac{3}{2}!',
+    story: 'Dave is really hungry! He ate 3 slices of a pizza that only has 2 slices. That is frac{3}{2}! When the top is bigger than the bottom, it is an improper fraction.',
     fractionBar: { total: 4, filled: 3, label: '3/2 = more than 1 whole!' },
     equation: 'frac{3}{2}',
-    highlight: 'When the top is bigger than the bottom, it is an improper fraction!',
+    highlight: 'Top bigger than bottom = improper fraction!',
   },
   {
     type: 'teach',
-    title: 'Mixed Numbers!',
-    story: 'frac{3}{2} means 1 whole cake plus frac{1}{2} more. We can write this as 1 and frac{1}{2}. That is called a mixed number!',
-    equation: 'frac{3}{2} = 1 and frac{1}{2}',
-    highlight: 'A mixed number = a whole number + a fraction!',
+    title: 'Analyzing an Improper Fraction!',
+    story: 'frac{3}{2} is like a combined plant. We can analyze it to see what is inside: 1 whole plant + frac{1}{2} of a plant. That is called a mixed number!',
+    craftingTable: {
+      title: 'Plant Analyzer',
+      inputs: [
+        { content: 'frac{3}{2}' },
+      ],
+      output: '1 and frac{1}{2}',
+      outputLabel: 'mixed number!',
+    },
+    highlight: 'Analyze an improper fraction to get a mixed number!',
   },
   {
     type: 'teach',
-    title: 'How to Convert!',
-    story: 'To turn an improper fraction into a mixed number: divide the top by the bottom!',
+    title: 'How to Analyze!',
+    story: 'To analyze an improper fraction into a mixed number: divide the top by the bottom! The answer is the whole part, the remainder is the fraction part.',
     equation: '3 / 2 = 1 remainder 1 = 1 and frac{1}{2}',
     highlight: 'Divide, and the remainder becomes the fraction!',
   },
   {
     type: 'interactive',
-    title: 'You Try!',
-    story: 'Steve has frac{5}{4} of a pie.',
-    fractionBar: { total: 8, filled: 5, label: '5/4' },
+    title: 'Analyze This!',
+    story: 'Dave has frac{5}{4} of a pizza. Analyze it to find the whole plant and fraction piece inside!',
+    craftingTable: {
+      title: 'Plant Analyzer',
+      inputs: [
+        { content: 'frac{5}{4}' },
+      ],
+      output: '?',
+      outputLabel: 'mixed number',
+    },
     question: 'What is frac{5}{4} as a mixed number?',
     choices: ['1 and frac{1}{4}', '1 and frac{1}{2}', '2 and frac{1}{4}'],
     correctIndex: 0,
-    explanation: '5 divided by 4 = 1 remainder 1. So frac{5}{4} = 1 and frac{1}{4}!',
+    explanation: '5 / 4 = 1 remainder 1. You found 1 and frac{1}{4}!',
   },
   {
     type: 'teach',
-    title: 'Going the Other Way!',
-    story: 'We can also turn a mixed number back into an improper fraction. Take 1 and frac{2}{3}.',
+    title: 'Combining: The Other Way!',
+    story: 'You can also combine a whole number and a fraction together into an improper fraction. Like mixing ingredients into a new plant!',
+    craftingTable: {
+      title: 'Planting Station',
+      inputs: [
+        { content: '1', label: 'whole' },
+        { content: 'frac{2}{3}', label: 'fraction' },
+      ],
+      output: 'frac{5}{3}',
+      outputLabel: 'improper fraction',
+    },
     equation: '1 x 3 + 2 = 5, so 1 and frac{2}{3} = frac{5}{3}',
     highlight: 'Multiply whole x bottom, then add the top!',
   },
   {
     type: 'interactive',
-    title: 'Convert This!',
-    story: 'Steve has 2 and frac{1}{2} pies.',
+    title: 'Combine This!',
+    story: 'Dave has 2 whole pizzas and frac{1}{2} of a pizza. Combine them into an improper fraction!',
+    craftingTable: {
+      title: 'Planting Station',
+      inputs: [
+        { content: '2', label: 'whole' },
+        { content: 'frac{1}{2}', label: 'fraction' },
+      ],
+      output: '?',
+    },
     question: 'What is 2 and frac{1}{2} as an improper fraction?',
     choices: ['frac{5}{2}', 'frac{3}{2}', 'frac{4}{2}'],
     correctIndex: 0,
-    explanation: '2 x 2 + 1 = 5. So 2 and frac{1}{2} = frac{5}{2}!',
+    explanation: '2 x 2 + 1 = 5. You combined frac{5}{2}!',
   },
 
   // --- Section D: Multiplying Fractions ---
   {
     type: 'teach',
     title: 'Half of a Half!',
-    story: 'Steve has frac{1}{2} of a cake. He eats frac{1}{2} of that piece. How much of the whole cake did he eat?',
+    story: 'Dave has frac{1}{2} of a pizza. He eats frac{1}{2} of that slice. How much of the whole pizza did he eat?',
     fractionBar: { total: 4, filled: 1, label: '1/2 of 1/2 = 1/4' },
     equation: 'frac{1}{2} x frac{1}{2} = frac{1}{4}',
     highlight: 'Half of a half is a quarter!',
@@ -170,7 +201,7 @@ export const chapter3Lesson = [
   {
     type: 'interactive',
     title: 'Multiply These!',
-    story: 'Steve takes frac{1}{2} of frac{1}{3} of a cake.',
+    story: 'Dave takes frac{1}{2} of frac{1}{3} of a pizza.',
     question: 'frac{1}{2} x frac{1}{3} = ?',
     choices: ['frac{1}{6}', 'frac{1}{5}', 'frac{2}{3}'],
     correctIndex: 0,
@@ -179,7 +210,7 @@ export const chapter3Lesson = [
   {
     type: 'interactive',
     title: 'One More Multiply!',
-    story: 'Alex eats frac{2}{3} of frac{1}{2} of a pie.',
+    story: 'Penny eats frac{2}{3} of frac{1}{2} of a pizza.',
     question: 'frac{2}{3} x frac{1}{2} = ?',
     choices: ['frac{2}{6}', 'frac{2}{5}', 'frac{3}{6}'],
     correctIndex: 0,
@@ -189,38 +220,52 @@ export const chapter3Lesson = [
   // --- Section E: Adding Fractions with Different Denominators ---
   {
     type: 'teach',
-    title: 'Different Size Pieces!',
-    story: 'Steve ate frac{1}{2} of a cake and Alex ate frac{1}{3}. How much total? We cannot just add frac{1}{2} + frac{1}{3} because the pieces are different sizes!',
+    title: 'Incompatible Seeds!',
+    story: 'You cannot just combine any seeds together! You need the right recipe. frac{1}{2} and frac{1}{3} have different-sized pieces. We need to convert them to the same size first!',
     fractionCompare: {
       left: { total: 2, filled: 1, label: '1/2' },
       right: { total: 3, filled: 1, label: '1/3' },
     },
-    highlight: 'We need to make the pieces the same size first!',
+    highlight: 'Different bottoms? Convert first, then combine!',
   },
   {
     type: 'teach',
-    title: 'Find a Common Bottom!',
-    story: 'Both 2 and 3 fit into 6. So we change both fractions: frac{1}{2} = frac{3}{6} and frac{1}{3} = frac{2}{6}. Now we can add!',
-    fractionBar: { total: 6, filled: 5, label: '3/6 + 2/6 = 5/6' },
-    equation: 'frac{1}{2} + frac{1}{3} = frac{3}{6} + frac{2}{6} = frac{5}{6}',
-    highlight: 'Make the bottoms match, then add the tops!',
+    title: 'Convert, Then Combine!',
+    story: 'Both 2 and 3 fit into 6. Convert frac{1}{2} to frac{3}{6} and frac{1}{3} to frac{2}{6}. Now they are compatible seeds we can combine together!',
+    craftingTable: {
+      title: 'Seed Mixing',
+      inputs: [
+        { content: 'frac{3}{6}', label: 'was 1/2' },
+        { content: 'frac{2}{6}', label: 'was 1/3' },
+      ],
+      output: 'frac{5}{6}',
+      outputLabel: 'total!',
+    },
+    highlight: 'Make the bottoms match, then combine!',
   },
   {
     type: 'interactive',
-    title: 'Add These!',
-    story: 'Steve ate frac{1}{2} of a pie and frac{1}{4} more. Hint: frac{1}{2} = frac{2}{4}.',
-    fractionBar: { total: 4, filled: 3, label: '2/4 + 1/4 = ?' },
+    title: 'Combine These Together!',
+    story: 'Dave ate frac{1}{2} of a pizza and frac{1}{4} more. Hint: frac{1}{2} = frac{2}{4}. Now they are compatible!',
+    craftingTable: {
+      title: 'Planting Station',
+      inputs: [
+        { content: 'frac{2}{4}', label: 'was 1/2' },
+        { content: 'frac{1}{4}' },
+      ],
+      output: '?',
+    },
     question: 'frac{1}{2} + frac{1}{4} = ?',
     choices: ['frac{3}{4}', 'frac{2}{6}', 'frac{1}{3}'],
     correctIndex: 0,
-    explanation: 'frac{1}{2} = frac{2}{4}. Then frac{2}{4} + frac{1}{4} = frac{3}{4}!',
+    explanation: 'frac{1}{2} = frac{2}{4}. Then combine: frac{2}{4} + frac{1}{4} = frac{3}{4}!',
   },
 ]
 
 export const chapter3Quiz = [
   {
     prompt: 'Which fraction is the same as frac{1}{2}?',
-    emoji: '🍰',
+    emoji: '🍕',
     choices: ['frac{3}{6}', 'frac{2}{3}', 'frac{1}{4}'],
     correctIndex: 0,
     explanation: 'frac{1}{2} x frac{3}{3} = frac{3}{6}. They are equivalent!',
@@ -228,7 +273,7 @@ export const chapter3Quiz = [
   },
   {
     prompt: 'Simplify frac{4}{8}',
-    emoji: '🍰',
+    emoji: '🍕',
     choices: ['frac{1}{4}', 'frac{1}{2}', 'frac{2}{4}'],
     correctIndex: 1,
     explanation: 'Divide top and bottom by 4: frac{4}{8} = frac{1}{2}!',
@@ -236,7 +281,7 @@ export const chapter3Quiz = [
   },
   {
     prompt: 'What is frac{7}{4} as a mixed number?',
-    emoji: '🍰',
+    emoji: '🍕',
     choices: ['1 and frac{1}{2}', '1 and frac{3}{4}', '2 and frac{1}{4}'],
     correctIndex: 1,
     explanation: '7 divided by 4 = 1 remainder 3. So frac{7}{4} = 1 and frac{3}{4}!',
@@ -244,7 +289,7 @@ export const chapter3Quiz = [
   },
   {
     prompt: 'frac{1}{3} x frac{1}{2} = ?',
-    emoji: '🍰',
+    emoji: '🍕',
     choices: ['frac{1}{6}', 'frac{2}{3}', 'frac{1}{5}'],
     correctIndex: 0,
     explanation: '1x1 = 1 on top, 3x2 = 6 on bottom. Answer: frac{1}{6}!',
@@ -252,7 +297,7 @@ export const chapter3Quiz = [
   },
   {
     prompt: 'frac{1}{2} + frac{1}{3} = ?',
-    emoji: '🍰',
+    emoji: '🍕',
     choices: ['frac{2}{5}', 'frac{5}{6}', 'frac{1}{6}'],
     correctIndex: 1,
     explanation: 'frac{1}{2} = frac{3}{6} and frac{1}{3} = frac{2}{6}. So frac{3}{6} + frac{2}{6} = frac{5}{6}!',
@@ -306,7 +351,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `Which fraction equals frac{${n}}{${d}}?`,
-        emoji: '🍰',
+        emoji: '🍕',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `frac{${n}}{${d}} x frac{${multiplier}}{${multiplier}} = frac{${equivN}}{${equivD}}!`,
@@ -340,7 +385,7 @@ const problemGenerators = [
       const divisor = f.n / f.sn
       return {
         prompt: `Simplify frac{${f.n}}{${f.d}}`,
-        emoji: '🍰',
+        emoji: '🍕',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `Divide both by ${divisor}: frac{${f.n}}{${f.d}} = ${answer}!`,
@@ -365,7 +410,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `What is frac{${numerator}}{${d}} as a mixed number?`,
-        emoji: '🍰',
+        emoji: '🍕',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `${numerator} / ${d} = ${whole} remainder ${remainder}. So frac{${numerator}}{${d}} = ${answer}!`,
@@ -394,7 +439,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `frac{${a.n}}{${a.d}} x frac{${b.n}}{${b.d}} = ?`,
-        emoji: '🍰',
+        emoji: '🍕',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `${a.n}x${b.n} = ${rn} on top, ${a.d}x${b.d} = ${rd} on bottom. Answer: ${answer}!`,
@@ -432,7 +477,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `frac{${p.a.n}}{${p.a.d}} + frac{${p.b.n}}{${p.b.d}} = ?`,
-        emoji: '🍰',
+        emoji: '🍕',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `Convert to ${p.lcd}ths: frac{${aN}}{${p.lcd}} + frac{${bN}}{${p.lcd}} = frac{${sumN}}{${p.lcd}}${g > 1 ? ` = ${answer}` : ''}!`,

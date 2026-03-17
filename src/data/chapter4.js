@@ -6,7 +6,7 @@ export const chapter4Lesson = [
   {
     type: 'teach',
     title: 'Parts Smaller Than One!',
-    story: 'Steve goes to the shop. A pickaxe costs 2 emeralds and 50 cents. We write that as 2.50. The dot is called a decimal point!',
+    story: 'Crazy Dave visits the Seed Shop. A Peashooter costs 2 sun and 50 cents. We write that as 2.50. The dot is called a decimal point!',
     equation: '2.50',
     highlight: 'The decimal point separates the whole number from the parts!',
   },
@@ -77,18 +77,18 @@ export const chapter4Lesson = [
   {
     type: 'interactive',
     title: 'Compare These!',
-    story: 'Steve has 0.6 of a diamond block. Alex has 0.4 of a diamond block.',
+    story: 'Dave has 0.6 of a sun pack. Penny has 0.4 of a sun pack.',
     question: 'Who has more?',
-    choices: ['Steve (0.6)', 'Alex (0.4)', 'They are equal'],
+    choices: ['Dave (0.6)', 'Penny (0.4)', 'They are equal'],
     correctIndex: 0,
-    explanation: '6 tenths is more than 4 tenths. Steve has more!',
+    explanation: '6 tenths is more than 4 tenths. Dave has more!',
   },
   {
     type: 'interactive',
     title: 'Tricky One!',
-    story: 'Steve has 0.5 emeralds. Alex has 0.50 emeralds.',
+    story: 'Dave has 0.5 sun. Penny has 0.50 sun.',
     question: 'Who has more?',
-    choices: ['Steve (0.5)', 'Alex (0.50)', 'They are equal!'],
+    choices: ['Dave (0.5)', 'Penny (0.50)', 'They are equal!'],
     correctIndex: 2,
     explanation: '0.5 and 0.50 are the same! Adding a zero at the end does not change the value!',
   },
@@ -145,7 +145,7 @@ export const chapter4Lesson = [
   {
     type: 'interactive',
     title: 'Round This!',
-    story: 'Steve has 2.38 emeralds.',
+    story: 'Dave has 2.38 sun.',
     question: 'Round 2.38 to the nearest tenth.',
     choices: ['2.4', '2.3', '2.5'],
     correctIndex: 0,
@@ -154,7 +154,7 @@ export const chapter4Lesson = [
   {
     type: 'interactive',
     title: 'One More Round!',
-    story: 'A potion costs 1.62 emeralds.',
+    story: 'A Snow Pea costs 1.62 sun.',
     question: 'Round 1.62 to the nearest tenth.',
     choices: ['1.7', '1.6', '1.5'],
     correctIndex: 1,
@@ -165,7 +165,7 @@ export const chapter4Lesson = [
 export const chapter4Quiz = [
   {
     prompt: 'What does the 4 mean in 0.4?',
-    emoji: '💎',
+    emoji: '☀️',
     choices: ['4 tenths', '4 hundredths', '4 ones'],
     correctIndex: 0,
     explanation: 'The first spot after the decimal is tenths. 0.4 = 4 tenths!',
@@ -173,7 +173,7 @@ export const chapter4Quiz = [
   },
   {
     prompt: 'Which is bigger: 0.7 or 0.35?',
-    emoji: '💎',
+    emoji: '☀️',
     choices: ['0.7', '0.35', 'They are equal'],
     correctIndex: 0,
     explanation: '0.7 = 0.70. 70 hundredths > 35 hundredths!',
@@ -181,7 +181,7 @@ export const chapter4Quiz = [
   },
   {
     prompt: 'Write 0.25 as a fraction.',
-    emoji: '💎',
+    emoji: '☀️',
     choices: ['25/100', '25/10', '2/5'],
     correctIndex: 0,
     explanation: '0.25 has two decimal places, so it is 25/100 (which equals 1/4)!',
@@ -189,7 +189,7 @@ export const chapter4Quiz = [
   },
   {
     prompt: '0.5 = which fraction?',
-    emoji: '💎',
+    emoji: '☀️',
     choices: ['1/2', '1/5', '5/100'],
     correctIndex: 0,
     explanation: '0.5 = 5/10 = 1/2!',
@@ -197,7 +197,7 @@ export const chapter4Quiz = [
   },
   {
     prompt: 'Round 3.67 to the nearest tenth.',
-    emoji: '💎',
+    emoji: '☀️',
     choices: ['3.6', '3.7', '4.0'],
     correctIndex: 1,
     explanation: 'The 7 in hundredths is >= 5, so round up! 3.67 rounds to 3.7!',
@@ -237,7 +237,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `What does the ${digit} mean in ${decimal}?`,
-        emoji: '💎',
+        emoji: '☀️',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `The ${digit} is in the ${place} place!`,
@@ -261,7 +261,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `Which is bigger: ${aStr} or ${bStr}?`,
-        emoji: '💎',
+        emoji: '☀️',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `${bigger} is bigger!`,
@@ -294,7 +294,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `${c.dec} = which fraction?`,
-        emoji: '💎',
+        emoji: '☀️',
         choices: choices.map(ch => ch.text),
         correctIndex: choices.findIndex(ch => ch.correct),
         explanation: `${c.dec} = ${c.frac}!`,
@@ -324,7 +324,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `Round ${num} to the nearest tenth.`,
-        emoji: '💎',
+        emoji: '☀️',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `${hundredths >= 5 ? `${hundredths} >= 5, round up!` : `${hundredths} < 5, keep it!`} ${num} rounds to ${roundedStr}!`,

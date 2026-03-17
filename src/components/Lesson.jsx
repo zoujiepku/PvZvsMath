@@ -35,7 +35,7 @@ function Lesson({ lessonData, setCurrentView, returnView }) {
         title="Lesson Complete!"
         score={lessonData.length}
         total={lessonData.length}
-        message="You finished the whole lesson! Great job, miner!"
+        message="You finished the whole lesson! Great job, defender!"
         onRetry={() => {
           setCurrentStep(0)
           setSelectedAnswer(null)
@@ -81,9 +81,17 @@ function Lesson({ lessonData, setCurrentView, returnView }) {
       <div className="lesson-nav">
         <button
           className="minecraft-button secondary"
-          onClick={() => setCurrentView(returnView)}
+          onClick={() => {
+            if (currentStep === 0) {
+              setCurrentView(returnView)
+            } else {
+              setCurrentStep(currentStep - 1)
+              setSelectedAnswer(null)
+              setFeedback(false)
+            }
+          }}
         >
-          Back
+          {currentStep === 0 ? 'Back' : 'Prev.'}
         </button>
         {canAdvance && (
           <button className="minecraft-button" onClick={handleNext}>

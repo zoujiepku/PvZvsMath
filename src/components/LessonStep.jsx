@@ -1,5 +1,6 @@
 import { EmojiGroup, EmojiGrid, EmojiVisual } from './EmojiGroup'
 import { FractionBar, FractionCompare } from './FractionBar'
+import CraftingTable from './CraftingTable'
 import MathText from './MathText'
 
 function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
@@ -24,6 +25,15 @@ function LessonStep({ step, onAnswer, selectedAnswer, feedback }) {
 
       {step.fractionCompare && (
         <FractionCompare left={step.fractionCompare.left} right={step.fractionCompare.right} />
+      )}
+
+      {step.craftingTable && (
+        <CraftingTable
+          inputs={step.craftingTable.inputs}
+          output={step.craftingTable.output}
+          outputLabel={step.craftingTable.outputLabel}
+          title={step.craftingTable.title}
+        />
       )}
 
       {step.groups && (

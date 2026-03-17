@@ -4,7 +4,7 @@ function ChapterTwo({ setCurrentView }) {
       <div className="content-box">
         <h2>Chapter 2: Fractions</h2>
         <p>Learn how to split things into equal parts!</p>
-        <p>Steve will teach you about halves, thirds, and quarters.</p>
+        <p>Use fractions to divide your lawn defense perfectly!</p>
       </div>
 
       <div className="chapter-actions">

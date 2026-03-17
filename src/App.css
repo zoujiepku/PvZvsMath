@@ -3,41 +3,41 @@
 }
 
 .app-header {
-  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-  border: 4px solid #654321;
+  background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%);
+  border: 4px solid #1B5E20;
   border-radius: 8px;
   padding: 1.5rem 1rem;
   text-align: center;
   margin-bottom: 2rem;
-  box-shadow: 0 8px 0 #654321, 0 12px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 0 #1B5E20, 0 12px 20px rgba(0,0,0,0.3);
 }
 
 .app-header h1 {
   color: #FFD700;
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-shadow: 3px 3px 0 #000;
   margin-bottom: 0.5rem;
-  line-height: 1.6;
+  line-height: 1.3;
 }
 
 .subtitle {
   color: #FFF;
-  font-size: 0.9rem;
-  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  font-family: 'Luckiest Guy', cursive;
   text-shadow: 2px 2px 0 #000;
 }
 
 .minecraft-button {
-  font-family: 'Press Start 2P', cursive;
-  background: linear-gradient(180deg, #7CFC00 0%, #228B22 100%);
+  font-family: 'Luckiest Guy', cursive;
+  background: linear-gradient(180deg, #FFD700 0%, #F9A825 100%);
   border: 3px solid #000;
-  color: #FFF;
+  color: #000;
   padding: 1rem 1.5rem;
-  font-size: 0.8rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.4;
   cursor: pointer;
-  text-shadow: 2px 2px 0 #000;
-  box-shadow: 0 4px 0 #1a5d1a, 0 8px 15px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+  box-shadow: 0 4px 0 #E65100, 0 8px 15px rgba(0,0,0,0.2);
   transition: transform 0.1s, box-shadow 0.1s;
   margin: 0.5rem;
   width: 100%;
@@ -45,69 +45,69 @@
 }
 
 .minecraft-button:hover {
-  background: linear-gradient(180deg, #90FF10 0%, #2aa32a 100%);
+  background: linear-gradient(180deg, #FFE033 0%, #FBC02D 100%);
 }
 
 .minecraft-button:active {
   transform: translateY(4px);
-  box-shadow: 0 0 0 #1a5d1a, 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 #E65100, 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .minecraft-button.secondary {
-  background: linear-gradient(180deg, #FF6347 0%, #DC143C 100%);
-  box-shadow: 0 4px 0 #8B0000, 0 8px 15px rgba(0,0,0,0.2);
+  background: linear-gradient(180deg, #6B8E23 0%, #556B2F 100%);
+  box-shadow: 0 4px 0 #3B5323, 0 8px 15px rgba(0,0,0,0.2);
 }
 
 .minecraft-button.secondary:hover {
-  background: linear-gradient(180deg, #FF7F5A 0%, #E9405E 100%);
+  background: linear-gradient(180deg, #7FA030 0%, #667F3A 100%);
 }
 
 .minecraft-button.secondary:active {
-  box-shadow: 0 0 0 #8B0000, 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 #3B5323, 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .minecraft-button.info {
-  background: linear-gradient(180deg, #4169E1 0%, #0047AB 100%);
-  box-shadow: 0 4px 0 #002366, 0 8px 15px rgba(0,0,0,0.2);
+  background: linear-gradient(180deg, #2196F3 0%, #1565C0 100%);
+  box-shadow: 0 4px 0 #0D47A1, 0 8px 15px rgba(0,0,0,0.2);
 }
 
 .minecraft-button.info:hover {
-  background: linear-gradient(180deg, #5B7FE9 0%, #1A5BC4 100%);
+  background: linear-gradient(180deg, #42A5F5 0%, #1E88E5 100%);
 }
 
 .minecraft-button.info:active {
-  box-shadow: 0 0 0 #002366, 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 #0D47A1, 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .content-box {
-  background: rgba(139, 90, 43, 0.9);
-  border: 4px solid #654321;
+  background: rgba(46, 125, 50, 0.85);
+  border: 4px solid #1B5E20;
   border-radius: 8px;
   padding: 1.5rem;
   margin: 1rem 0;
   color: #FFF;
-  box-shadow: 0 6px 0 #654321, 0 10px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 0 #1B5E20, 0 10px 20px rgba(0,0,0,0.3);
 }
 
 .content-box h2 {
   color: #FFD700;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 0 #000;
-  line-height: 1.6;
+  line-height: 1.3;
 }
 
 .content-box p, .content-box li {
-  font-family: 'Courier New', monospace;
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
   margin-bottom: 0.5rem;
 }
 
 /* Progress bar */
 .progress-bar {
-  background: #3a2010;
-  border: 3px solid #654321;
+  background: #1B5E20;
+  border: 3px solid #1B5E20;
   border-radius: 4px;
   height: 32px;
   position: relative;
@@ -116,7 +116,7 @@
 }
 
 .progress-bar-fill {
-  background: linear-gradient(180deg, #7CFC00 0%, #228B22 100%);
+  background: linear-gradient(180deg, #FFD700 0%, #F9A825 100%);
   height: 100%;
   transition: width 0.3s ease;
   border-radius: 2px;
@@ -127,8 +127,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.6rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.9rem;
   color: #FFF;
   text-shadow: 1px 1px 0 #000;
 }
@@ -147,7 +147,7 @@
   font-size: 1.5rem;
   color: #FFD700;
   text-shadow: 2px 2px 0 #000;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 .emoji-group {
@@ -169,8 +169,8 @@
 }
 
 .emoji-label {
-  font-family: 'Courier New', monospace;
-  font-size: 0.8rem;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 1rem;
   color: #FFD700;
   text-shadow: 1px 1px 0 #000;
 }
@@ -193,14 +193,14 @@
 
 /* Equation display */
 .equation {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.3rem;
   color: #FFD700;
   text-align: center;
   text-shadow: 2px 2px 0 #000;
   margin: 1rem 0;
   padding: 0.75rem;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   line-height: 1.8;
 }
@@ -210,10 +210,21 @@
   font-size: 0.75em;
   vertical-align: super;
   line-height: 0;
-  color: #7CFC00;
+  color: #FFD700;
 }
 
 .minecraft-button .math-exp {
+  color: #000;
+}
+
+.minecraft-button.secondary,
+.minecraft-button.info {
+  color: #FFF;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.minecraft-button.secondary .math-exp,
+.minecraft-button.info .math-exp {
   color: #FFF;
 }
 
@@ -223,7 +234,7 @@
 
 .sqrt-symbol {
   font-size: 1.1em;
-  color: #7CFC00;
+  color: #FFD700;
 }
 
 .math-frac {
@@ -237,7 +248,7 @@
 
 .math-frac-num,
 .math-frac-den {
-  font-size: 0.75em;
+  font-size: 0.9em;
   padding: 0 0.15em;
 }
 
@@ -255,7 +266,7 @@
 }
 
 .question-prompt {
-  font-size: 1rem;
+  font-size: 1.15rem;
   text-align: center;
   margin-bottom: 1rem;
   line-height: 1.8;
@@ -268,7 +279,7 @@
 }
 
 .choice-button {
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .choice-button:disabled {
@@ -278,9 +289,9 @@
 }
 
 .choice-correct {
-  background: linear-gradient(180deg, #7CFC00 0%, #228B22 100%) !important;
-  border-color: #7CFC00 !important;
-  box-shadow: 0 0 12px rgba(124, 252, 0, 0.5), 0 4px 0 #1a5d1a !important;
+  background: linear-gradient(180deg, #4CAF50 0%, #2E7D32 100%) !important;
+  border-color: #4CAF50 !important;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.5), 0 4px 0 #1B5E20 !important;
   opacity: 1 !important;
 }
 
@@ -299,8 +310,8 @@
 }
 
 .feedback-correct {
-  background: rgba(34, 139, 34, 0.3);
-  border: 2px solid #228B22;
+  background: rgba(76, 175, 80, 0.3);
+  border: 2px solid #4CAF50;
 }
 
 .feedback-wrong {
@@ -309,14 +320,14 @@
 }
 
 .feedback-text {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.9rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
   text-shadow: 2px 2px 0 #000;
 }
 
 .feedback-correct .feedback-text {
-  color: #7CFC00;
+  color: #4CAF50;
 }
 
 .feedback-wrong .feedback-text {
@@ -324,7 +335,7 @@
 }
 
 .feedback-explanation {
-  font-size: 0.85rem;
+  font-size: 1.05rem;
 }
 
 /* Lesson top bar */
@@ -334,20 +345,20 @@
 
 .lesson-jump {
   width: 100%;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.6rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.9rem;
   padding: 0.5rem;
   margin-top: 0.5rem;
-  background: #3a2010;
+  background: #1B5E20;
   color: #FFD700;
-  border: 3px solid #654321;
+  border: 3px solid #1B5E20;
   border-radius: 4px;
   cursor: pointer;
   text-shadow: 1px 1px 0 #000;
 }
 
 .lesson-jump option {
-  background: #3a2010;
+  background: #1B5E20;
   color: #FFD700;
 }
 
@@ -357,9 +368,9 @@
 }
 
 .lesson-step .highlight {
-  font-family: 'Press Start 2P', cursive;
-  color: #7CFC00;
-  font-size: 0.85rem;
+  font-family: 'Luckiest Guy', cursive;
+  color: #FFD700;
+  font-size: 1.2rem;
   text-shadow: 2px 2px 0 #000;
   margin-top: 0.5rem;
   line-height: 1.8;
@@ -383,15 +394,15 @@
 }
 
 .score-big {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1.5rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.5rem;
   color: #FFD700;
   text-shadow: 3px 3px 0 #000;
   margin: 1rem 0;
 }
 
 .score-message {
-  font-size: 1rem;
+  font-size: 1.15rem;
   margin-bottom: 1rem;
   line-height: 1.8;
 }
@@ -403,16 +414,16 @@
 }
 
 .streak-display {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.8rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.1rem;
   color: #FF6347;
   text-shadow: 2px 2px 0 #000;
   margin-bottom: 0.5rem;
 }
 
 .streak-live {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.7rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
   color: #FF6347;
   text-shadow: 1px 1px 0 #000;
   text-align: center;
@@ -433,25 +444,25 @@
 }
 
 .fraction-slot {
-  width: 36px;
-  height: 36px;
-  border: 3px solid #654321;
+  width: 44px;
+  height: 32px;
+  border: 3px solid #2E7D32;
   border-radius: 4px;
 }
 
 .fraction-slot-filled {
-  background: linear-gradient(180deg, #7CFC00 0%, #228B22 100%);
+  background: linear-gradient(180deg, #4CAF50 0%, #2E7D32 100%);
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
 }
 
 .fraction-slot-empty {
-  background: #3a2010;
+  background: #8D6E63;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .fraction-bar-label {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.7rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
   color: #FFD700;
   text-shadow: 1px 1px 0 #000;
   margin-top: 0.25rem;
@@ -467,10 +478,130 @@
 }
 
 .fraction-vs {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.8rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.1rem;
   color: #FFD700;
   text-shadow: 2px 2px 0 #000;
+}
+
+/* Crafting Table (Planting Station) */
+.crafting-table {
+  background: linear-gradient(135deg, #5D4037 0%, #4E342E 100%);
+  border: 4px solid #3E2723;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 360px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.5), 0 4px 0 #3E2723;
+}
+
+.crafting-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.9rem;
+  color: #A5D6A7;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  text-shadow: 1px 1px 0 #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.crafting-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.crafting-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.crafting-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.crafting-plus {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.9rem;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.crafting-slot {
+  background: #A1887F;
+  border: 3px solid #795548;
+  border-top-color: #BCAAA4;
+  border-left-color: #BCAAA4;
+  border-radius: 2px;
+  min-width: 56px;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.crafting-slot-output {
+  background: linear-gradient(135deg, #FFD700 0%, #F9A825 100%);
+  border-color: #F57F17;
+  border-top-color: #FFE082;
+  border-left-color: #FFE082;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3), 0 0 10px rgba(255, 215, 0, 0.25);
+  min-width: 64px;
+  min-height: 64px;
+}
+
+.crafting-slot-content {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #FFF;
+  text-shadow: 1px 1px 0 #000;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.crafting-slot-output .crafting-slot-content {
+  color: #3E2723;
+  font-size: 1.1rem;
+  text-shadow: none;
+}
+
+.crafting-slot-label {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 0.8rem;
+  color: #ddd;
+  margin-top: 0.15rem;
+}
+
+.crafting-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 0.25rem;
+}
+
+.crafting-arrow-shaft {
+  display: block;
+  width: 20px;
+  height: 6px;
+  background: #4CAF50;
+  border: 1px solid #2E7D32;
+}
+
+.crafting-arrow-head {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 14px solid #4CAF50;
 }
 
 /* Chapter hub */
@@ -488,37 +619,37 @@
 /* Mobile responsive */
 @media (max-width: 480px) {
   .app-header h1 {
-    font-size: 1rem;
+    font-size: 1.6rem;
   }
 
   .subtitle {
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   .minecraft-button {
-    font-size: 0.7rem;
+    font-size: 1rem;
     padding: 0.8rem 1rem;
   }
 
   .content-box h2 {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
 
   .content-box p, .content-box li {
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 768px) {
   .app-header h1 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .subtitle {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 
   .minecraft-button {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 }

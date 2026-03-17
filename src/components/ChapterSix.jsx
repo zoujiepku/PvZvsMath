@@ -4,7 +4,7 @@ function ChapterSix({ setCurrentView }) {
       <div className="content-box">
         <h2>Chapter 6: Exponents & Powers</h2>
         <p>Unlock the power of tiny numbers!</p>
-        <p>Creeper explosions, shrinking potions, and secret enchantments await.</p>
+        <p>Cherry Bomb blasts, growth rates, and power multipliers await!</p>
       </div>
 
       <div className="chapter-actions">

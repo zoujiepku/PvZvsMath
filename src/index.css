@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 * {
   margin: 0;
@@ -7,8 +7,8 @@
 }
 
 body {
-  font-family: 'Courier New', monospace;
-  background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 50%, #90EE90 50%, #90EE90 100%);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 40%, #5DA85D 60%, #4CAF50 100%);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,7 +21,7 @@ body {
 }
 
 h1, h2, h3, button {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 /* Mobile-first responsive design */

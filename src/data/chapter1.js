@@ -1,23 +1,23 @@
 // Chapter 1: Math Laws
-// Commutative, Associative, and Distributive laws with Minecraft scenarios
+// Commutative, Associative, and Distributive laws with Plants vs Zombies scenarios
 
 export const chapter1Lesson = [
   // --- Section A: Commutative Law of Addition ---
   {
     type: 'teach',
-    title: 'Swapping Diamonds!',
-    story: 'Steve found diamonds in a cave! He put 3 in his left pocket and 2 in his right pocket.',
-    visual: { left: { emoji: '💎', count: 3 }, right: { emoji: '💎', count: 2 } },
+    title: 'Collecting Sun!',
+    story: 'Crazy Dave collected sun on the lawn! He stored 3 sun on the left side and 2 sun on the right side.',
+    visual: { left: { emoji: '☀️', count: 3 }, right: { emoji: '☀️', count: 2 } },
     equation: '3 + 2 = 5',
-    highlight: 'Steve has 5 diamonds total!',
+    highlight: 'Dave has 5 sun total!',
   },
   {
     type: 'teach',
     title: 'Now Swap!',
-    story: 'Steve switches pockets! Now 2 diamonds are in the left and 3 are in the right.',
-    visual: { left: { emoji: '💎', count: 2 }, right: { emoji: '💎', count: 3 } },
+    story: 'Dave swaps the sides! Now 2 sun are on the left and 3 are on the right.',
+    visual: { left: { emoji: '☀️', count: 2 }, right: { emoji: '☀️', count: 3 } },
     equation: '2 + 3 = 5',
-    highlight: 'Still 5 diamonds! The same!',
+    highlight: 'Still 5 sun! The same!',
   },
   {
     type: 'teach',
@@ -29,8 +29,8 @@ export const chapter1Lesson = [
   {
     type: 'interactive',
     title: 'Your Turn!',
-    story: 'Steve has some pigs on his farm.',
-    visual: { left: { emoji: '🐷', count: 4 }, right: { emoji: '🐷', count: 1 } },
+    story: 'Dave has some Sunflowers on his lawn.',
+    visual: { left: { emoji: '🌻', count: 4 }, right: { emoji: '🌻', count: 1 } },
     question: 'Is 4 + 1 the same as 1 + 4?',
     choices: ['Yes, same!', 'No, different!'],
     correctIndex: 0,
@@ -38,31 +38,31 @@ export const chapter1Lesson = [
   },
   {
     type: 'interactive',
-    title: 'Dirt Blocks!',
-    story: 'Steve has 6 dirt blocks and Alex has 3 dirt blocks.',
-    visual: { left: { emoji: '🟫', count: 6 }, right: { emoji: '🟫', count: 3 } },
+    title: 'Lawn Tiles!',
+    story: 'Dave has 6 lawn tiles and Penny has 3 lawn tiles.',
+    visual: { left: { emoji: '🟩', count: 6 }, right: { emoji: '🟩', count: 3 } },
     question: 'Is 6 + 3 the same as 3 + 6?',
     choices: ['Yes!', 'No!'],
     correctIndex: 0,
-    explanation: '6 + 3 = 9 and 3 + 6 = 9. Alex agrees!',
+    explanation: '6 + 3 = 9 and 3 + 6 = 9. Penny agrees!',
   },
 
   // --- Section B: Commutative Law of Multiplication ---
   {
     type: 'teach',
-    title: 'Building a Wall!',
-    story: 'Steve is building a brick wall. He makes 2 rows with 4 bricks in each row.',
-    grid: { emoji: '🧱', rows: 2, cols: 4 },
+    title: 'Planting Peashooters!',
+    story: 'Dave is planting Peashooters on the lawn. He makes 2 rows with 4 Peashooters in each row.',
+    grid: { emoji: '🫛', rows: 2, cols: 4 },
     equation: '2 x 4 = 8',
-    highlight: '8 bricks total!',
+    highlight: '8 Peashooters total!',
   },
   {
     type: 'teach',
-    title: 'Turn the Wall!',
-    story: 'Now Steve turns the wall sideways! 4 rows with 2 bricks in each row.',
-    grid: { emoji: '🧱', rows: 4, cols: 2 },
+    title: 'Rotate the Garden!',
+    story: 'Now Dave rotates the garden! 4 rows with 2 Peashooters in each row.',
+    grid: { emoji: '🫛', rows: 4, cols: 2 },
     equation: '4 x 2 = 8',
-    highlight: 'Still 8 bricks! The same!',
+    highlight: 'Still 8 Peashooters! The same!',
   },
   {
     type: 'teach',
@@ -73,9 +73,9 @@ export const chapter1Lesson = [
   },
   {
     type: 'interactive',
-    title: 'Obsidian Wall!',
-    story: 'Steve builds with obsidian blocks.',
-    grid: { emoji: '⬛', rows: 3, cols: 2 },
+    title: 'Wall-nut Defense!',
+    story: 'Dave builds a Wall-nut defense grid.',
+    grid: { emoji: '🛡️', rows: 3, cols: 2 },
     question: 'Is 3 rows of 2 the same as 2 rows of 3?',
     choices: ['Yes, same total!', 'No, different!'],
     correctIndex: 0,
@@ -85,28 +85,28 @@ export const chapter1Lesson = [
   // --- Section C: Associative Law of Addition ---
   {
     type: 'teach',
-    title: 'Three Caves!',
-    story: 'Steve explored 3 caves! He found 2 diamonds in Cave 1, 3 diamonds in Cave 2, and 4 diamonds in Cave 3.',
+    title: 'Three Lanes!',
+    story: 'Dave defended 3 lawn lanes! He collected 2 sun from Lane 1, 3 sun from Lane 2, and 4 sun from Lane 3.',
     groups: [
-      { emoji: '💎', count: 2, label: 'Cave 1' },
-      { emoji: '💎', count: 3, label: 'Cave 2' },
-      { emoji: '💎', count: 4, label: 'Cave 3' },
+      { emoji: '☀️', count: 2, label: 'Lane 1' },
+      { emoji: '☀️', count: 3, label: 'Lane 2' },
+      { emoji: '☀️', count: 4, label: 'Lane 3' },
     ],
     highlight: 'How should he add them up?',
   },
   {
     type: 'teach',
-    title: 'Add Caves 1 + 2 First',
-    story: 'Steve adds Cave 1 and Cave 2 first:',
+    title: 'Add Lanes 1 + 2 First',
+    story: 'Dave adds Lane 1 and Lane 2 first:',
     equation: '(2 + 3) + 4 = 5 + 4 = 9',
-    highlight: '9 diamonds!',
+    highlight: '9 sun!',
   },
   {
     type: 'teach',
-    title: 'Add Caves 2 + 3 First',
-    story: 'Alex adds Cave 2 and Cave 3 first:',
+    title: 'Add Lanes 2 + 3 First',
+    story: 'Penny adds Lane 2 and Lane 3 first:',
     equation: '2 + (3 + 4) = 2 + 7 = 9',
-    highlight: 'Also 9 diamonds! Same answer!',
+    highlight: 'Also 9 sun! Same answer!',
   },
   {
     type: 'teach',
@@ -118,7 +118,7 @@ export const chapter1Lesson = [
   {
     type: 'interactive',
     title: 'Try Grouping!',
-    story: 'Steve found emeralds in 3 villages.',
+    story: 'Dave found sun in 3 gardens.',
     question: '(1 + 2) + 3 = ? and 1 + (2 + 3) = ?',
     choices: ['Both equal 6!', 'First is bigger', 'Second is bigger'],
     correctIndex: 0,
@@ -128,22 +128,22 @@ export const chapter1Lesson = [
   // --- Section D: Associative Law of Multiplication ---
   {
     type: 'teach',
-    title: 'Chests of Pickaxes!',
-    story: 'Steve has 2 rooms. Each room has 3 chests. Each chest has 2 pickaxes.',
+    title: 'Seed Packets!',
+    story: 'Dave has 2 gardens. Each garden has 3 rows. Each row has 2 plants.',
     equation: '(2 x 3) x 2 = 6 x 2 = 12',
-    highlight: '12 pickaxes!',
+    highlight: '12 plants!',
   },
   {
     type: 'teach',
     title: 'Group Differently!',
-    story: 'What if we group the chests and pickaxes first?',
+    story: 'What if we group the rows and plants first?',
     equation: '2 x (3 x 2) = 2 x 6 = 12',
-    highlight: 'Still 12 pickaxes!',
+    highlight: 'Still 12 plants!',
   },
   {
     type: 'interactive',
     title: 'Your Turn!',
-    story: 'Steve is sorting his items.',
+    story: 'Dave is sorting his seed packets.',
     question: 'Is (2 x 1) x 3 the same as 2 x (1 x 3)?',
     choices: ['Yes, both are 6!', 'No, they are different!'],
     correctIndex: 0,
@@ -154,25 +154,25 @@ export const chapter1Lesson = [
   {
     type: 'teach',
     title: 'Bonus Law!',
-    story: 'Steve has 2 bags. Each bag has 3 diamonds and 1 pickaxe. That is 4 items per bag.',
+    story: 'Dave has 2 lanes. Each lane has 3 Sunflowers and 1 Peashooter. That is 4 plants per lane.',
     groups: [
-      { emoji: '💎', count: 3, label: 'Diamonds' },
-      { emoji: '⛏️', count: 1, label: 'Pickaxe' },
+      { emoji: '🌻', count: 3, label: 'Sunflowers' },
+      { emoji: '🫛', count: 1, label: 'Peashooter' },
     ],
     equation: '2 x (3 + 1) = 2 x 4 = 8',
-    highlight: '8 items total!',
+    highlight: '8 plants total!',
   },
   {
     type: 'teach',
     title: 'Count Separately!',
-    story: 'Or count each type: 2 bags x 3 diamonds = 6 diamonds. 2 bags x 1 pickaxe = 2 pickaxes.',
+    story: 'Or count each type: 2 lanes x 3 Sunflowers = 6 Sunflowers. 2 lanes x 1 Peashooter = 2 Peashooters.',
     equation: '(2 x 3) + (2 x 1) = 6 + 2 = 8',
     highlight: 'Same answer! This is the Distributive Law!',
   },
   {
     type: 'interactive',
     title: 'Distributive Challenge!',
-    story: 'Steve has 2 bags. Each bag has 1 emerald and 4 gold bars.',
+    story: 'Dave has 2 lanes. Each lane has 1 Snow Pea and 4 Sunflowers.',
     question: '2 x (1 + 4) = ?',
     choices: ['10', '8', '6'],
     correctIndex: 0,
@@ -183,7 +183,7 @@ export const chapter1Lesson = [
 export const chapter1Quiz = [
   {
     prompt: '3 + 5 is the same as...',
-    emoji: '💎',
+    emoji: '☀️',
     choices: ['5 + 3', '5 + 5', '3 + 3'],
     correctIndex: 0,
     explanation: 'Commutative Law! 3+5 = 5+3. Swapping is okay!',
@@ -191,7 +191,7 @@ export const chapter1Quiz = [
   },
   {
     prompt: '2 x 4 is the same as...',
-    emoji: '🧱',
+    emoji: '🫛',
     choices: ['4 x 4', '4 x 2', '2 x 2'],
     correctIndex: 1,
     explanation: 'Commutative Law! 2x4 = 4x2. The order does not matter!',
@@ -199,7 +199,7 @@ export const chapter1Quiz = [
   },
   {
     prompt: '(2 + 3) + 1 = ?',
-    emoji: '⛏️',
+    emoji: '🌱',
     choices: ['5', '6', '7'],
     correctIndex: 1,
     explanation: '(2+3)+1 = 5+1 = 6!',
@@ -207,7 +207,7 @@ export const chapter1Quiz = [
   },
   {
     prompt: 'Is (1 + 4) + 2 the same as 1 + (4 + 2)?',
-    emoji: '💎',
+    emoji: '☀️',
     choices: ['Yes!', 'No!'],
     correctIndex: 0,
     explanation: 'Associative Law! (1+4)+2 = 5+2 = 7 and 1+(4+2) = 1+6 = 7. Same!',
@@ -215,7 +215,7 @@ export const chapter1Quiz = [
   },
   {
     prompt: '2 x (3 + 1) = ?',
-    emoji: '🧱',
+    emoji: '🫛',
     choices: ['6', '7', '8'],
     correctIndex: 2,
     explanation: 'Distributive Law! 2x(3+1) = 2x4 = 8. Or: 2x3+2x1 = 6+2 = 8!',
@@ -258,7 +258,7 @@ const problemGenerators = [
     generate() {
       const a = randomInt(1, 9)
       const b = randomInt(1, 9)
-      const emojis = ['💎', '⛏️', '🐷', '🟫', '🧱']
+      const emojis = ['☀️', '🌱', '🌻', '🟩', '🫛']
       const emoji = emojis[randomInt(0, emojis.length - 1)]
       return {
         prompt: `Is ${a} + ${b} the same as ${b} + ${a}?`,
@@ -277,7 +277,7 @@ const problemGenerators = [
       const b = randomInt(1, 5)
       return {
         prompt: `Is ${a} x ${b} the same as ${b} x ${a}?`,
-        emoji: '🧱',
+        emoji: '🫛',
         choices: ['Yes!', 'No!'],
         correctIndex: 0,
         explanation: `${a}x${b} = ${a * b} and ${b}x${a} = ${a * b}. Same!`,
@@ -295,7 +295,7 @@ const problemGenerators = [
       const { choices, correctIndex } = makeChoices(total, total + 1, total - 1)
       return {
         prompt: `(${a} + ${b}) + ${c} = ?`,
-        emoji: '💎',
+        emoji: '☀️',
         choices,
         correctIndex,
         explanation: `(${a}+${b}) = ${a + b}, then ${a + b}+${c} = ${total}!`,
@@ -315,7 +315,7 @@ const problemGenerators = [
       const { choices, correctIndex } = makeChoices(total, wrong1, wrong2)
       return {
         prompt: `(${a} x ${b}) x ${c} = ?`,
-        emoji: '⛏️',
+        emoji: '🌱',
         choices,
         correctIndex,
         explanation: `(${a}x${b}) = ${a * b}, then ${a * b}x${c} = ${total}!`,
@@ -335,7 +335,7 @@ const problemGenerators = [
       const { choices, correctIndex } = makeChoices(total, wrong1, wrong2)
       return {
         prompt: `${a} x (${b} + ${c}) = ?`,
-        emoji: '🧱',
+        emoji: '🫛',
         choices,
         correctIndex,
         explanation: `${a}x${b}=${a * b} and ${a}x${c}=${a * c}. Then ${a * b}+${a * c}=${total}!`,

@@ -6,9 +6,9 @@ export const chapter6Lesson = [
   // --- Section A: What Are Exponents? ---
   {
     type: 'teach',
-    title: 'Creeper Multiplication!',
-    story: 'BOOM! A creeper explodes and makes a mess of blocks. What if the mess DOUBLED every second?',
-    equation: '2 x 2 x 2 = 2^{3} = 8 blocks of mess!',
+    title: 'Cherry Bomb Chain Reaction!',
+    story: 'BOOM! A Cherry Bomb explodes and the blast DOUBLES every second! What if the damage kept doubling?',
+    equation: '2 x 2 x 2 = 2^{3} = 8 blocks of damage!',
     highlight: 'Instead of writing 2 x 2 x 2, we write 2 to the power of 3!',
   },
   {
@@ -20,23 +20,23 @@ export const chapter6Lesson = [
   },
   {
     type: 'teach',
-    title: 'Steve\'s Chicken Farm!',
-    story: 'Steve has 3 chickens. Each chicken hatches 3 eggs. Now he has 3 x 3 = 9 chickens! We say "3 squared" or "3 to the power of 2."',
-    grid: { emoji: '🐔', rows: 3, cols: 3 },
+    title: 'Dave\'s Sunflower Garden!',
+    story: 'Dave has 3 Sunflowers. Each Sunflower produces 3 more Sunflowers. Now he has 3 x 3 = 9 Sunflowers! We say "3 squared" or "3 to the power of 2."',
+    grid: { emoji: '🌻', rows: 3, cols: 3 },
     equation: '3^{2} = 3 x 3 = 9',
     highlight: 'Squared means multiplied by itself!',
   },
   {
     type: 'teach',
     title: 'Cubed!',
-    story: 'Those 9 chickens each hatch 3 more! 3 x 3 x 3 = 27 chickens! That is 3^{3} = 27. We say "3 cubed" — like a 3x3x3 cube of blocks!',
+    story: 'Those 9 Sunflowers each produce 3 more! 3 x 3 x 3 = 27 Sunflowers! That is 3^{3} = 27. We say "3 cubed" — like a 3x3x3 cube of sun!',
     equation: '3^{3} = 3 x 3 x 3 = 27',
-    highlight: 'Steve\'s farm is out of control!',
+    highlight: 'Dave\'s garden is out of control!',
   },
   {
     type: 'interactive',
-    title: 'TNT Power!',
-    story: 'Steve lights a chain of TNT! Each one doubles the explosion: 2 x 2 x 2 x 2...',
+    title: 'Cherry Bomb Power!',
+    story: 'Dave lights a chain of Cherry Bombs! Each one doubles the explosion: 2 x 2 x 2 x 2...',
     question: 'What is 2^{4}?',
     choices: ['16', '8', '12'],
     correctIndex: 0,
@@ -44,8 +44,8 @@ export const chapter6Lesson = [
   },
   {
     type: 'interactive',
-    title: 'Chicken Math!',
-    story: 'Steve has 5 chickens and each one hatches 5 more...',
+    title: 'Sunflower Math!',
+    story: 'Dave has 5 Sunflowers and each one grows 5 more...',
     question: 'What is 5^{2}?',
     choices: ['25', '10', '52'],
     correctIndex: 0,
@@ -55,8 +55,8 @@ export const chapter6Lesson = [
   // --- Section B: Multiplying Powers (Same Base) ---
   {
     type: 'teach',
-    title: 'Combining Chests!',
-    story: 'Steve has two chests of diamonds. Let us see what happens when we MULTIPLY two powers with the same base!',
+    title: 'Combining Seed Packs!',
+    story: 'Dave has two seed packs of Peashooters. Let us see what happens when we MULTIPLY two powers with the same base!',
     equation: '2^{3} x 2^{2} = (2x2x2) x (2x2) = 2^{5} = 32',
     highlight: 'Count the 2s: three 2s times two 2s = five 2s!',
   },
@@ -70,7 +70,7 @@ export const chapter6Lesson = [
   {
     type: 'interactive',
     title: 'Zombie Army!',
-    story: 'A zombie spawner makes 3^{2} zombies on Monday and 3^{3} on Tuesday. They all team up!',
+    story: 'A graveyard spawns 3^{2} zombies on Monday and 3^{3} on Tuesday. They all team up!',
     question: '3^{2} x 3^{3} = ?',
     choices: ['3^{5} = 243', '3^{6} = 729', '9^{5}'],
     correctIndex: 0,
@@ -79,7 +79,7 @@ export const chapter6Lesson = [
   {
     type: 'interactive',
     title: 'Power Combo!',
-    story: 'Steve enchants his sword with two power boosts!',
+    story: 'Dave powers up his Peashooter with two plant food boosts!',
     question: '5^{3} x 5^{2} = 5^{?}',
     choices: ['5^{5}', '5^{6}', '5^{1}'],
     correctIndex: 0,
@@ -89,8 +89,8 @@ export const chapter6Lesson = [
   // --- Section C: Dividing Powers (Same Base) ---
   {
     type: 'teach',
-    title: 'Sharing the Loot!',
-    story: 'Steve has 2^{5} = 32 blocks. He divides them into groups of 2^{2} = 4. How many groups? The 2s cancel out!',
+    title: 'Distributing Plant Food!',
+    story: 'Dave has 2^{5} = 32 plant food. He divides them into groups of 2^{2} = 4. How many groups? The 2s cancel out!',
     equation: '2^{5} / 2^{2} = 2^{5-2} = 2^{3} = 8',
     highlight: 'Two of the 2s cancel! Five 2s minus two 2s = three 2s!',
   },
@@ -103,8 +103,8 @@ export const chapter6Lesson = [
   },
   {
     type: 'interactive',
-    title: 'Dividing Diamonds!',
-    story: 'Steve has a huge pile of diamonds and shares some with Alex.',
+    title: 'Dividing Sun!',
+    story: 'Dave has a huge pile of sun and shares some with Penny.',
     question: '4^{5} / 4^{3} = 4^{?}',
     choices: ['4^{2}', '4^{8}', '4^{15}'],
     correctIndex: 0,
@@ -112,12 +112,12 @@ export const chapter6Lesson = [
   },
   {
     type: 'interactive',
-    title: 'Skeleton Slayer!',
-    story: 'Steve defeated 10^{4} skeletons over 10^{2} days. How many per day?',
+    title: 'Zombie Slayer!',
+    story: 'Dave defeated 10^{4} zombies over 10^{2} days. How many per day?',
     question: '10^{4} / 10^{2} = ?',
     choices: ['10^{2} = 100', '10^{6} = 1000000', '10^{8}'],
     correctIndex: 0,
-    explanation: 'Subtract: 4-2 = 2. So 10^{2} = 100 skeletons per day!',
+    explanation: 'Subtract: 4-2 = 2. So 10^{2} = 100 zombies per day!',
   },
 
   // --- Section D: The Power of Zero ---
@@ -130,15 +130,15 @@ export const chapter6Lesson = [
   },
   {
     type: 'teach',
-    title: 'Even a Creeper!',
-    story: '5^{0} = 1. 100^{0} = 1. 999^{0} = 1. A MILLION to the power of zero? Still 1! Zero power is the ultimate equalizer — every number bows to it!',
+    title: 'Even a Gargantuar!',
+    story: '5^{0} = 1. 100^{0} = 1. 999^{0} = 1. A MILLION to the power of zero? Still 1! Zero power is the ultimate equalizer — even the mightiest Gargantuar bows to it!',
     equation: 'n^{0} = 1    (for any n)',
     highlight: 'The zero exponent: turning giants into ones since forever!',
   },
   {
     type: 'interactive',
     title: 'Zero Power Challenge!',
-    story: 'Steve found the Answer to the Ultimate Question of Life, the Universe, and Everything...',
+    story: 'Dave found the Answer to the Ultimate Question of Life, the Universe, and Everything...',
     question: 'What is 42^{0}?',
     choices: ['1', '42', '0'],
     correctIndex: 0,
@@ -155,15 +155,15 @@ export const chapter6Lesson = [
   },
   {
     type: 'teach',
-    title: 'Shrinking Steve!',
-    story: 'Steve drank a shrinking potion! Each negative power makes him tinier! 2^{-1} = 1/2 his size. 2^{-2} = 1/4 his size. 2^{-3} = 1/8 his size!',
+    title: 'Shrinking Zombie!',
+    story: 'A zombie got hit by a Shrink Violet! Each negative power makes it tinier! 2^{-1} = 1/2 its size. 2^{-2} = 1/4 its size. 2^{-3} = 1/8 its size!',
     equation: '2^{-2} = 1 / 2^{2} = 1/4',
     highlight: 'Negative exponent = 1 OVER the positive power!',
   },
   {
     type: 'interactive',
-    title: 'Potion Power!',
-    story: 'Steve takes a Potion of Shrinking...',
+    title: 'Shrink Violet Power!',
+    story: 'Dave uses a Shrink Violet on a zombie...',
     question: 'What is 3^{-1}?',
     choices: ['1/3', '-3', '3'],
     correctIndex: 0,
@@ -171,44 +171,44 @@ export const chapter6Lesson = [
   },
   {
     type: 'interactive',
-    title: 'Tiny Steve!',
-    story: 'Steve takes an EXTRA STRONG shrinking potion!',
+    title: 'Tiny Zombie!',
+    story: 'Dave uses an EXTRA STRONG Shrink Violet!',
     question: 'What is 5^{-2}?',
     choices: ['1/25', '-10', '25'],
     correctIndex: 0,
-    explanation: '5^{-2} = 1 / 5^{2} = 1/25. Steve is TINY!',
+    explanation: '5^{-2} = 1 / 5^{2} = 1/25. That zombie is TINY!',
   },
 
   // --- Section F: Square Root Teaser ---
   {
     type: 'teach',
-    title: 'The Secret Enchantment!',
-    story: 'Steve found a mysterious enchantment table! It asks: what number times itself equals 9? Well, 3 x 3 = 9! So the answer is 3. This is called the SQUARE ROOT!',
+    title: 'The Mystical Plant!',
+    story: 'Dave found a mysterious Mystical Plant! It asks: what number times itself equals 9? Well, 3 x 3 = 9! So the answer is 3. This is called the SQUARE ROOT!',
     equation: 'sqrt{9} = 3    because 3^{2} = 9',
     highlight: 'Square root = the REVERSE of squaring!',
   },
   {
     type: 'teach',
     title: 'The Half Power!',
-    story: 'Here is the ULTIMATE Minecraft math secret: the square root is the same as raising to the power of 1/2! The enchantment table glows...',
+    story: 'Here is the ULTIMATE plant math secret: the square root is the same as raising to the power of 1/2! The Mystical Plant glows...',
     equation: 'sqrt{9} = 9^{1/2} = 3',
     highlight: 'Half exponent = square root! Mind = blown!',
   },
   {
     type: 'interactive',
     title: 'Root Challenge!',
-    story: 'The enchantment table asks Steve one more question...',
+    story: 'The Mystical Plant asks Dave one more question...',
     question: 'What is sqrt{16}?',
     choices: ['4', '8', '2'],
     correctIndex: 0,
-    explanation: '4 x 4 = 16, so sqrt{16} = 4! Steve unlocked the enchantment!',
+    explanation: '4 x 4 = 16, so sqrt{16} = 4! Dave unlocked the Mystical Plant!',
   },
 ]
 
 export const chapter6Quiz = [
   {
     prompt: 'What is 3^{3}?',
-    emoji: '🐔',
+    emoji: '🌻',
     choices: ['27', '9', '33'],
     correctIndex: 0,
     explanation: '3^{3} = 3 x 3 x 3 = 27!',
@@ -216,7 +216,7 @@ export const chapter6Quiz = [
   },
   {
     prompt: '2^{3} x 2^{2} = ?',
-    emoji: '💎',
+    emoji: '☀️',
     choices: ['2^{5} = 32', '2^{6} = 64', '4^{5}'],
     correctIndex: 0,
     explanation: 'Same base! Add exponents: 3+2=5. 2^{5} = 32!',
@@ -224,7 +224,7 @@ export const chapter6Quiz = [
   },
   {
     prompt: '5^{4} / 5^{2} = ?',
-    emoji: '⚔️',
+    emoji: '💥',
     choices: ['5^{2} = 25', '5^{6}', '5^{8}'],
     correctIndex: 0,
     explanation: 'Same base! Subtract exponents: 4-2=2. 5^{2} = 25!',
@@ -302,7 +302,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `${base}^{${m}} x ${base}^{${n}} = ${base}^{?}`,
-        emoji: '⚔️',
+        emoji: '💥',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `Same base ${base}! Add exponents: ${m}+${n}=${sum}. Answer: ${base}^{${sum}}!`,
@@ -324,7 +324,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `${base}^{${m}} / ${base}^{${n}} = ${base}^{?}`,
-        emoji: '💎',
+        emoji: '☀️',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `Same base ${base}! Subtract exponents: ${m}-${n}=${diff}. Answer: ${base}^{${diff}}!`,
@@ -365,7 +365,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `What is ${base}^{-${exp}}?`,
-        emoji: '🧪',
+        emoji: '🌿',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `${base}^{-${exp}} = 1 / ${base}^{${exp}} = 1/${denom}!`,

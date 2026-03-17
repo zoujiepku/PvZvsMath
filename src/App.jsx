@@ -32,8 +32,8 @@ function App() {
   return (
     <div className="app">
       <header className="app-header" onClick={() => setCurrentView('home')} style={{ cursor: 'pointer' }}>
-        <h1>Minecraft Math</h1>
-        <p className="subtitle">Learn Math with Steve!</p>
+        <h1>PvZ vs Math</h1>
+        <p className="subtitle">Defend the Lawn with Math!</p>
       </header>
 
       {currentView === 'home' && <Home setCurrentView={setCurrentView} />}
