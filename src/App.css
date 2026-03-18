@@ -725,6 +725,311 @@
   gap: 0.5rem;
 }
 
+/* Disabled buttons */
+.minecraft-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Number Line Blaster ── */
+.nlb-game {
+  text-align: center;
+}
+
+.nlb-header {
+  margin-bottom: 0.5rem;
+}
+
+.nlb-header h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.nlb-header p {
+  margin: 0;
+}
+
+/* Message bar */
+.nlb-message-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+  text-shadow: 1px 1px 0 #000;
+  color: #FFF;
+}
+
+.nlb-msg-hit {
+  background: rgba(76, 175, 80, 0.4);
+  border: 2px solid #4CAF50;
+}
+
+.nlb-msg-miss {
+  background: rgba(220, 20, 60, 0.35);
+  border: 2px solid #DC143C;
+}
+
+/* Number line */
+.nlb-line-area {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 2.5rem 1.5rem 2rem;
+  margin: 0.5rem 0;
+  overflow-x: auto;
+}
+
+.nlb-line {
+  position: relative;
+  height: 70px;
+  min-width: 100%;
+}
+
+.nlb-track {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  border-radius: 2px;
+}
+
+.nlb-tick {
+  position: absolute;
+  top: 35px;
+  transform: translateX(-50%);
+}
+
+.nlb-tick-mark {
+  width: 2px;
+  height: 12px;
+  background: #2E7D32;
+  margin: 0 auto;
+  transform: translateY(-6px);
+}
+
+.nlb-tick-label {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.65rem;
+  color: #A5D6A7;
+  text-shadow: 1px 1px 0 #000;
+  margin-top: 4px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.nlb-zombie-marker {
+  position: absolute;
+  top: -2px;
+  transform: translate(-50%, -100%);
+  text-align: center;
+  transition: opacity 0.3s;
+}
+
+.nlb-zombie-dead {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.nlb-zombie-pos {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.6rem;
+  color: #FF6347;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.nlb-pea-marker {
+  position: absolute;
+  top: 22px;
+  transform: translateX(-50%);
+  transition: left 0.3s ease;
+  text-align: center;
+}
+
+.nlb-pea-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #AED581, #689F38);
+  border: 2px solid #33691E;
+  margin: 0 auto;
+  box-shadow: 0 0 6px rgba(139, 195, 74, 0.6);
+}
+
+.nlb-pea-label {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.75rem;
+  color: #8BC34A;
+  text-shadow: 1px 1px 0 #000;
+  margin-top: 1px;
+}
+
+/* Cards */
+.nlb-cards-area {
+  margin: 0.5rem 0;
+}
+
+.nlb-cards-label {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.85rem;
+  color: #A5D6A7;
+  text-shadow: 1px 1px 0 #000;
+  margin-bottom: 0.4rem;
+}
+
+.nlb-hand {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  align-items: center;
+}
+
+.nlb-card {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  border: 3px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 3px 0 rgba(0,0,0,0.3);
+  color: #FFF;
+}
+
+.nlb-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 rgba(0,0,0,0.3);
+}
+
+.nlb-card:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.3);
+}
+
+.nlb-card-add {
+  background: linear-gradient(180deg, #4CAF50, #388E3C);
+  border-color: #2E7D32;
+}
+
+.nlb-card-sub {
+  background: linear-gradient(180deg, #e53935, #c62828);
+  border-color: #b71c1c;
+}
+
+.nlb-card-mul {
+  background: linear-gradient(180deg, #1E88E5, #1565C0);
+  border-color: #0D47A1;
+}
+
+.nlb-card-pow {
+  background: linear-gradient(180deg, #FF9800, #E65100);
+  border-color: #BF360C;
+}
+
+.nlb-card-root {
+  background: linear-gradient(180deg, #AB47BC, #7B1FA2);
+  border-color: #4A148C;
+}
+
+.nlb-card-chained {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.6rem;
+}
+
+/* Chain display */
+.nlb-chain-area {
+  background: rgba(0,0,0,0.3);
+  border: 2px solid #2E7D32;
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  min-height: 48px;
+}
+
+.nlb-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.nlb-chain-value {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.95rem;
+  color: #8BC34A;
+  text-shadow: 1px 1px 0 #000;
+  padding: 0 0.15rem;
+}
+
+.nlb-chain-arrow {
+  color: #FFD700;
+  font-size: 0.9rem;
+}
+
+.nlb-chain-empty {
+  color: #888;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Actions */
+.nlb-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nlb-actions .minecraft-button {
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  margin: 0.2rem;
+}
+
+/* Level select */
+.nlb-worlds, .nlb-levels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.nlb-stars {
+  color: #FFD700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Victory */
+.nlb-victory {
+  text-align: center;
+}
+
+.nlb-big-stars {
+  font-size: 2.5rem;
+  color: #FFD700;
+  text-shadow: 3px 3px 0 #000;
+  margin: 0.5rem 0;
+}
+
+.nlb-stat {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  margin: 0.25rem 0;
+}
+
 /* Mobile responsive */
 @media (max-width: 480px) {
   .app-header h1 {

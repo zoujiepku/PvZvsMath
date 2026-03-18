@@ -1,12 +1,12 @@
 // Chapter 5: Decimal Operations
-// Adding, subtracting, multiplying decimals, money applications
+// Adding, subtracting, multiplying decimals, coin applications
 
 export const chapter5Lesson = [
   // --- Section A: Adding Decimals ---
   {
     type: 'teach',
     title: 'Adding Decimals!',
-    story: 'Crazy Dave buys a Snow Pea for 2.50 sun and a Wall-nut for 1.25 sun. How much total? Line up the decimal points and add!',
+    story: 'Crazy Dave buys a Snow Pea for 2.50 coins and a Wall-nut for 1.25 coins. How much total? Line up the decimal points and add!',
     equation: '2.50 + 1.25 = 3.75',
     highlight: 'Line up the decimal points, then add like normal!',
   },
@@ -20,7 +20,7 @@ export const chapter5Lesson = [
   {
     type: 'interactive',
     title: 'Add These!',
-    story: 'Dave finds 1.30 sun on the lawn and 2.50 more behind a zombie.',
+    story: 'Dave finds 1.30 coins on the lawn and 2.50 more behind a zombie.',
     question: '1.30 + 2.50 = ?',
     choices: ['3.80', '3.53', '2.80'],
     correctIndex: 0,
@@ -29,7 +29,7 @@ export const chapter5Lesson = [
   {
     type: 'interactive',
     title: 'Different Lengths!',
-    story: 'A Cherry Bomb costs 1.5 sun. A Sunflower costs 0.75 sun.',
+    story: 'A Cherry Bomb costs 1.5 coins. A Sunflower costs 0.75 coins.',
     question: '1.5 + 0.75 = ?',
     choices: ['2.25', '1.75', '2.00'],
     correctIndex: 0,
@@ -40,21 +40,21 @@ export const chapter5Lesson = [
   {
     type: 'teach',
     title: 'Subtracting Decimals!',
-    story: 'Dave has 5.00 sun. He spends 2.35 on Peashooters. How much is left? Same rule: line up the decimal points!',
+    story: 'Dave has 5.00 coins. He spends 2.35 on Peashooters. How much is left? Same rule: line up the decimal points!',
     equation: '5.00 - 2.35 = 2.65',
     highlight: 'Line up the dots, subtract like normal!',
   },
   {
     type: 'teach',
     title: 'Add Zeros First!',
-    story: 'Dave has 3.5 sun. He spends 1.25. Pad with a zero first: 3.50 - 1.25.',
+    story: 'Dave has 3.5 coins. He spends 1.25. Pad with a zero first: 3.50 - 1.25.',
     equation: '3.50 - 1.25 = 2.25',
     highlight: 'Always match the number of decimal places!',
   },
   {
     type: 'interactive',
     title: 'Subtract These!',
-    story: 'Dave has 4.50 sun and spends 1.20 on seeds.',
+    story: 'Dave has 4.50 coins and spends 1.20 on seeds.',
     question: '4.50 - 1.20 = ?',
     choices: ['3.30', '3.70', '2.30'],
     correctIndex: 0,
@@ -63,7 +63,7 @@ export const chapter5Lesson = [
   {
     type: 'interactive',
     title: 'Tricky Subtract!',
-    story: 'Penny has 2.00 sun. She buys a Lily Pad for 0.75.',
+    story: 'Penny has 2.00 coins. She buys a Lily Pad for 0.75 coins.',
     question: '2.00 - 0.75 = ?',
     choices: ['1.25', '1.75', '1.35'],
     correctIndex: 0,
@@ -74,7 +74,7 @@ export const chapter5Lesson = [
   {
     type: 'teach',
     title: 'Multiplying Decimals!',
-    story: 'Each seed packet costs 0.25 sun. Dave buys 3 packets. How much total? Multiply then count decimal places!',
+    story: 'Each seed packet costs 0.25 coins. Dave buys 3 packets. How much total? Multiply then count decimal places!',
     equation: '0.25 x 3 = 0.75',
     highlight: 'Multiply the numbers, then put back the decimal point!',
   },
@@ -104,40 +104,40 @@ export const chapter5Lesson = [
     explanation: '5 x 4 = 20. Two decimal places total = 0.20!',
   },
 
-  // --- Section D: Money Problems ---
+  // --- Section D: Coin Shop Problems ---
   {
     type: 'teach',
-    title: 'Money Math!',
-    story: 'Dave goes to the garden shop. A Cherry Bomb costs $3.50 and plant food costs $1.75. Decimals are perfect for money!',
-    equation: '$3.50 + $1.75 = $5.25',
-    highlight: 'Money always uses two decimal places for cents!',
+    title: 'Coin Shop Math!',
+    story: 'Dave visits Crazy Dave\'s Twiddydinkies shop! A Cherry Bomb costs 3.50 coins and plant food costs 1.75 coins. Decimals are perfect for counting coins!',
+    equation: '3.50 + 1.75 = 5.25 coins',
+    highlight: 'Coins always use decimal values!',
   },
   {
     type: 'interactive',
     title: 'Shopping Trip!',
-    story: 'Dave buys a Peashooter for $4.25 and a Torchwood for $0.50.',
+    story: 'Dave buys a Peashooter for 4.25 coins and a Torchwood for 0.50 coins.',
     question: 'How much does Dave spend?',
-    choices: ['$4.75', '$4.50', '$5.25'],
+    choices: ['4.75 coins', '4.50 coins', '5.25 coins'],
     correctIndex: 0,
-    explanation: '$4.25 + $0.50 = $4.75!',
+    explanation: '4.25 + 0.50 = 4.75 coins!',
   },
   {
     type: 'interactive',
     title: 'Making Change!',
-    story: 'Dave pays $5.00 for something that costs $3.25.',
+    story: 'Dave pays 5.00 coins for something that costs 3.25 coins.',
     question: 'How much change does Dave get?',
-    choices: ['$1.75', '$2.25', '$1.25'],
+    choices: ['1.75 coins', '2.25 coins', '1.25 coins'],
     correctIndex: 0,
-    explanation: '$5.00 - $3.25 = $1.75 change!',
+    explanation: '5.00 - 3.25 = 1.75 coins change!',
   },
   {
     type: 'interactive',
     title: 'Buying Multiple!',
-    story: 'Each Sunflower costs $0.75. Dave buys 2 Sunflowers.',
+    story: 'Each Sunflower costs 0.75 coins. Dave buys 2 Sunflowers.',
     question: 'How much does Dave pay?',
-    choices: ['$1.50', '$1.75', '$0.77'],
+    choices: ['1.50 coins', '1.75 coins', '0.77 coins'],
     correctIndex: 0,
-    explanation: '$0.75 x 2 = $1.50!',
+    explanation: '0.75 x 2 = 1.50 coins!',
   },
 
   // --- Section E: Decimals and Fractions Together ---
@@ -178,7 +178,7 @@ export const chapter5Lesson = [
 export const chapter5Quiz = [
   {
     prompt: '1.25 + 2.50 = ?',
-    emoji: '☀️',
+    emoji: '🪙',
     choices: ['3.75', '3.25', '2.75'],
     correctIndex: 0,
     explanation: 'Line up the decimals: 1.25 + 2.50 = 3.75!',
@@ -186,7 +186,7 @@ export const chapter5Quiz = [
   },
   {
     prompt: '5.00 - 1.75 = ?',
-    emoji: '☀️',
+    emoji: '🪙',
     choices: ['3.25', '3.75', '4.25'],
     correctIndex: 0,
     explanation: '5.00 - 1.75 = 3.25!',
@@ -194,23 +194,23 @@ export const chapter5Quiz = [
   },
   {
     prompt: '0.25 x 4 = ?',
-    emoji: '☀️',
+    emoji: '🪙',
     choices: ['1.00', '0.29', '0.100'],
     correctIndex: 0,
     explanation: '25 x 4 = 100. Two decimal places = 1.00!',
     law: 'Multiplying Decimals',
   },
   {
-    prompt: 'Dave buys 3 seed packets at $0.50 each. How much?',
-    emoji: '☀️',
-    choices: ['$1.50', '$1.00', '$3.50'],
+    prompt: 'Dave buys 3 seed packets at 0.50 coins each. How much?',
+    emoji: '🪙',
+    choices: ['1.50 coins', '1.00 coins', '3.50 coins'],
     correctIndex: 0,
-    explanation: '$0.50 x 3 = $1.50!',
-    law: 'Money',
+    explanation: '0.50 x 3 = 1.50 coins!',
+    law: 'Coin Problems',
   },
   {
     prompt: 'What is 1/4 as a decimal?',
-    emoji: '☀️',
+    emoji: '🪙',
     choices: ['0.25', '0.50', '0.14'],
     correctIndex: 0,
     explanation: '1/4 = 1 divided by 4 = 0.25!',
@@ -250,7 +250,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `${a.toFixed(1)} + ${b.toFixed(1)} = ?`,
-        emoji: '☀️',
+        emoji: '🪙',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `${a.toFixed(1)} + ${b.toFixed(1)} = ${sum}!`,
@@ -274,7 +274,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `${a.toFixed(1)} - ${b.toFixed(1)} = ?`,
-        emoji: '☀️',
+        emoji: '🪙',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `${a.toFixed(1)} - ${b.toFixed(1)} = ${diff}!`,
@@ -297,7 +297,7 @@ const problemGenerators = [
       ])
       return {
         prompt: `${dec} x ${whole} = ?`,
-        emoji: '☀️',
+        emoji: '🪙',
         choices: choices.map(c => c.text),
         correctIndex: choices.findIndex(c => c.correct),
         explanation: `${dec} x ${whole} = ${product}!`,
@@ -305,7 +305,7 @@ const problemGenerators = [
     },
   },
   {
-    id: 'money-problem',
+    id: 'coin-problem',
     weight: 3,
     generate() {
       const isAdd = Math.random() < 0.5
@@ -316,16 +316,16 @@ const problemGenerators = [
         const wrong1 = (a + b + 0.25).toFixed(2)
         const wrong2 = (a + b - 0.25).toFixed(2)
         const choices = shuffleArray([
-          { text: `$${total}`, correct: true },
-          { text: `$${wrong1}`, correct: false },
-          { text: `$${wrong2}`, correct: false },
+          { text: `${total} coins`, correct: true },
+          { text: `${wrong1} coins`, correct: false },
+          { text: `${wrong2} coins`, correct: false },
         ])
         return {
-          prompt: `Dave buys plants for $${a.toFixed(2)} and $${b.toFixed(2)}. How much total?`,
-          emoji: '☀️',
+          prompt: `Dave buys plants for ${a.toFixed(2)} coins and ${b.toFixed(2)} coins. How much total?`,
+          emoji: '🪙',
           choices: choices.map(c => c.text),
           correctIndex: choices.findIndex(c => c.correct),
-          explanation: `$${a.toFixed(2)} + $${b.toFixed(2)} = $${total}!`,
+          explanation: `${a.toFixed(2)} + ${b.toFixed(2)} = ${total} coins!`,
         }
       } else {
         const total = randomInt(5, 10)
@@ -334,16 +334,16 @@ const problemGenerators = [
         const wrong1 = (total - cost + 0.25).toFixed(2)
         const wrong2 = (total - cost - 0.25).toFixed(2)
         const choices = shuffleArray([
-          { text: `$${change}`, correct: true },
-          { text: `$${wrong1}`, correct: false },
-          { text: `$${wrong2}`, correct: false },
+          { text: `${change} coins`, correct: true },
+          { text: `${wrong1} coins`, correct: false },
+          { text: `${wrong2} coins`, correct: false },
         ])
         return {
-          prompt: `Dave pays $${total}.00 for something that costs $${cost.toFixed(2)}. How much change?`,
-          emoji: '☀️',
+          prompt: `Dave pays ${total}.00 coins for something that costs ${cost.toFixed(2)} coins. How much change?`,
+          emoji: '🪙',
           choices: choices.map(c => c.text),
           correctIndex: choices.findIndex(c => c.correct),
-          explanation: `$${total}.00 - $${cost.toFixed(2)} = $${change}!`,
+          explanation: `${total}.00 - ${cost.toFixed(2)} = ${change} coins!`,
         }
       }
     },
@@ -374,7 +374,7 @@ const problemGenerators = [
         ])
         return {
           prompt: `What is ${p.frac} as a decimal?`,
-          emoji: '☀️',
+          emoji: '🪙',
           choices: choices.map(c => c.text),
           correctIndex: choices.findIndex(c => c.correct),
           explanation: `${p.frac} = ${p.dec}!`,
@@ -392,7 +392,7 @@ const problemGenerators = [
         ])
         return {
           prompt: `What fraction is ${p.dec}?`,
-          emoji: '☀️',
+          emoji: '🪙',
           choices: choices.map(c => c.text),
           correctIndex: choices.findIndex(c => c.correct),
           explanation: `${p.dec} = ${p.frac}!`,

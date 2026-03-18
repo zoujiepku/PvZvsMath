@@ -35,6 +35,17 @@ function Home({ setCurrentView }) {
           </button>
         ))}
       </div>
+
+      <div className="content-box" style={{ marginTop: '1rem' }}>
+        <h2>Games</h2>
+        <p>Test your math skills in action!</p>
+      </div>
+
+      <div className="chapter-list">
+        <button className="minecraft-button" onClick={() => setCurrentView('game-nlb')}>
+          <span className="btn-with-icon"><Peashooter size={24} /> Number Line Blaster</span>
+        </button>
+      </div>
     </div>
   )
 }

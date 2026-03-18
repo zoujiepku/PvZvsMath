@@ -11,6 +11,7 @@ import Lesson from './components/Lesson'
 import Quiz from './components/Quiz'
 import Practice from './components/Practice'
 import { Peashooter, Zombie } from './components/characters'
+import NumberLineBlaster from './components/games/NumberLineBlaster'
 import { chapter1Lesson, chapter1Quiz, chapter1PracticeConfig, generatePracticeProblem as generateCh1 } from './data/chapter1'
 import { chapter2Lesson, chapter2Quiz, chapter2PracticeConfig, generatePracticeProblem as generateCh2 } from './data/chapter2'
 import { chapter3Lesson, chapter3Quiz, chapter3PracticeConfig, generatePracticeProblem as generateCh3 } from './data/chapter3'
@@ -42,6 +43,7 @@ function App() {
       </header>
 
       {currentView === 'home' && <Home setCurrentView={setCurrentView} />}
+      {currentView === 'game-nlb' && <NumberLineBlaster setCurrentView={setCurrentView} />}
 
       {chapters.map(ch => (
         <span key={ch.id}>
