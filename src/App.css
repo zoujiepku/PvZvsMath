@@ -6,9 +6,9 @@
   background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%);
   border: 4px solid #1B5E20;
   border-radius: 8px;
-  padding: 1.5rem 1rem;
+  padding: 0.5rem 1rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   box-shadow: 0 8px 0 #1B5E20, 0 12px 20px rgba(0,0,0,0.3);
 }
 
@@ -16,8 +16,8 @@
   color: #FFD700;
   font-size: 2rem;
   text-shadow: 3px 3px 0 #000;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
+  margin-bottom: 0.15rem;
+  line-height: 1.1;
 }
 
 .subtitle {
@@ -83,8 +83,8 @@
   background: rgba(46, 125, 50, 0.85);
   border: 4px solid #1B5E20;
   border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
   color: #FFF;
   box-shadow: 0 6px 0 #1B5E20, 0 10px 20px rgba(0,0,0,0.3);
 }
@@ -92,16 +92,16 @@
 .content-box h2 {
   color: #FFD700;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
   text-shadow: 2px 2px 0 #000;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .content-box p, .content-box li {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
 }
 
 /* Progress bar */
@@ -134,13 +134,26 @@
 }
 
 /* Emoji visuals */
-.emoji-visual {
+.emoji-visual-stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 1rem 0;
+}
+
+.emoji-visual-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
-  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.emoji-visual-label {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 1rem;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
 }
 
 .emoji-plus {

@@ -1,5 +1,17 @@
 import { getCharacterForEmoji } from './characters/emojiMap'
 
+const emojiNames = {
+  '☀️': ['sun', 'suns'],
+  '🌻': ['sunflower', 'sunflowers'],
+  '🟩': ['lawn tile', 'lawn tiles'],
+}
+
+function emojiName(emoji, count) {
+  const names = emojiNames[emoji]
+  if (!names) return emoji
+  return count === 1 ? names[0] : names[1]
+}
+
 function EmojiGroup({ emoji, count, label }) {
   const Char = getCharacterForEmoji(emoji)
 
@@ -36,13 +48,31 @@ function EmojiGrid({ emoji, rows, cols }) {
   )
 }
 
+function EmojiInline({ emoji, count }) {
+  const Char = getCharacterForEmoji(emoji)
+  return (
+    <>
+      {Array.from({ length: count }, (_, i) => (
+        <span key={i} className="emoji-item">
+          {Char ? <Char size={24} /> : emoji}
+        </span>
+      ))}
+    </>
+  )
+}
+
 function EmojiVisual({ visual }) {
   if (!visual) return null
   return (
-    <div className="emoji-visual">
-      <EmojiGroup emoji={visual.left.emoji} count={visual.left.count} label={`${visual.left.count} ${visual.left.emoji}`} />
-      <span className="emoji-plus">+</span>
-      <EmojiGroup emoji={visual.right.emoji} count={visual.right.count} label={`${visual.right.count} ${visual.right.emoji}`} />
+    <div className="emoji-visual-stacked">
+      <div className="emoji-visual-line">
+        <EmojiInline emoji={visual.left.emoji} count={visual.left.count} />
+        <span className="emoji-plus">+</span>
+        <EmojiInline emoji={visual.right.emoji} count={visual.right.count} />
+      </div>
+      <div className="emoji-visual-label">
+        {visual.left.count} {emojiName(visual.left.emoji, visual.left.count)} + {visual.right.count} {emojiName(visual.right.emoji, visual.right.count)}
+      </div>
     </div>
   )
 }

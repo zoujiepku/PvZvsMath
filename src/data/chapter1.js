@@ -8,16 +8,14 @@ export const chapter1Lesson = [
     title: 'Collecting Sun!',
     story: 'Crazy Dave collected sun on the lawn! He stored 3 sun on the left side and 2 sun on the right side.',
     visual: { left: { emoji: '☀️', count: 3 }, right: { emoji: '☀️', count: 2 } },
-    equation: '3 + 2 = 5',
-    highlight: 'Dave has 5 sun total!',
+    highlight: '3 + 2 = 5 sun total!',
   },
   {
     type: 'teach',
     title: 'Now Swap!',
     story: 'Dave swaps the sides! Now 2 sun are on the left and 3 are on the right.',
     visual: { left: { emoji: '☀️', count: 2 }, right: { emoji: '☀️', count: 3 } },
-    equation: '2 + 3 = 5',
-    highlight: 'Still 5 sun! The same!',
+    highlight: '2 + 3 = 5. Still the same!',
   },
   {
     type: 'teach',
