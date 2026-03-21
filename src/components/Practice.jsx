@@ -2,6 +2,8 @@ import { useState, useCallback } from 'react'
 import QuestionCard from './QuestionCard'
 import ScoreScreen from './ScoreScreen'
 import { Sun, Sunflower } from './characters'
+import { getMathReward } from './games/garden/economy'
+import { awardCoinsToGarden } from '../data/progressState'
 
 function Practice({ practiceConfig, generateFn, setCurrentView, returnView }) {
   const generate = useCallback(
@@ -17,6 +19,8 @@ function Practice({ practiceConfig, generateFn, setCurrentView, returnView }) {
   const [totalCorrect, setTotalCorrect] = useState(0)
   const [totalAttempted, setTotalAttempted] = useState(0)
   const [done, setDone] = useState(false)
+  const [sessionCoins, setSessionCoins] = useState(0)
+  const [coinAlert, setCoinAlert] = useState(null)
 
   function handleAnswer(choiceIndex) {
     setSelectedAnswer(choiceIndex)
@@ -28,6 +32,13 @@ function Practice({ practiceConfig, generateFn, setCurrentView, returnView }) {
       setStreak(newStreak)
       setTotalCorrect(totalCorrect + 1)
       if (newStreak > bestStreak) setBestStreak(newStreak)
+
+      // Award coins to garden
+      const { total, bonus } = getMathReward(newStreak)
+      setSessionCoins(prev => prev + total)
+      awardCoinsToGarden(total)
+      setCoinAlert(`+${total} 🪙${bonus > 0 ? ` (streak +${bonus})` : ''}`)
+      setTimeout(() => setCoinAlert(null), 1500)
     } else {
       setStreak(0)
     }
@@ -72,11 +83,15 @@ function Practice({ practiceConfig, generateFn, setCurrentView, returnView }) {
 
   return (
     <div className="practice">
-      {streak > 0 && (
-        <div className="streak-live">
-          Streak: {streak} {streakDisplay}
-        </div>
-      )}
+      <div className="practice-rewards-row">
+        <span className="practice-session-coins">🪙 +{sessionCoins}</span>
+        {streak > 0 && (
+          <span className="streak-live">
+            Streak: {streak} {streakDisplay}
+          </span>
+        )}
+      </div>
+      {coinAlert && <div className="garden-coin-alert">{coinAlert}</div>}
 
       <QuestionCard
         question={problem}

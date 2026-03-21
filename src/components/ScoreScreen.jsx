@@ -37,7 +37,7 @@ function ScoreScreen({ title, score, total, onContinue, onRetry, message, streak
         </p>
       )}
 
-      <p className="score-message">{message || encouragement}</p>
+      <p className="score-message" style={{ whiteSpace: 'pre-line' }}>{message || encouragement}</p>
 
       <div className="score-actions">
         {onRetry && (

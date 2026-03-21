@@ -255,7 +255,8 @@ const problemGenerators = [
     weight: 3,
     generate() {
       const a = randomInt(1, 9)
-      const b = randomInt(1, 9)
+      let b = randomInt(1, 9)
+      while (b === a) b = randomInt(1, 9)
       const emojis = ['☀️', '🌱', '🌻', '🟩', '🫛']
       const emoji = emojis[randomInt(0, emojis.length - 1)]
       return {
@@ -272,7 +273,8 @@ const problemGenerators = [
     weight: 2,
     generate() {
       const a = randomInt(1, 5)
-      const b = randomInt(1, 5)
+      let b = randomInt(1, 5)
+      while (b === a) b = randomInt(1, 5)
       return {
         prompt: `Is ${a} x ${b} the same as ${b} x ${a}?`,
         emoji: '🫛',

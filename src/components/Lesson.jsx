@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import ProgressBar from './ProgressBar'
 import LessonStep from './LessonStep'
 import ScoreScreen from './ScoreScreen'
+import {
+  loadProgress, saveProgress, recordLessonCompletion,
+  getLessonCoinReward, awardCoinsToGarden,
+} from '../data/progressState'
 
-function Lesson({ lessonData, setCurrentView, returnView }) {
+function Lesson({ lessonData, setCurrentView, returnView, chapterId }) {
   const [currentStep, setCurrentStep] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [feedback, setFeedback] = useState(false)
   const [completed, setCompleted] = useState(false)
+  const [coinsEarned, setCoinsEarned] = useState(null)
+  const rewardApplied = useRef(false)
 
   const step = lessonData[currentStep]
   const isInteractive = step?.type === 'interactive'
@@ -25,22 +31,38 @@ function Lesson({ lessonData, setCurrentView, returnView }) {
       setSelectedAnswer(null)
       setFeedback(false)
     } else {
+      // Award coins on lesson completion
+      if (!rewardApplied.current) {
+        rewardApplied.current = true
+        const progress = loadProgress()
+        const coins = getLessonCoinReward(progress, chapterId)
+        const newProgress = recordLessonCompletion(progress, chapterId)
+        saveProgress(newProgress)
+        awardCoinsToGarden(coins)
+        setCoinsEarned(coins)
+      }
       setCompleted(true)
     }
   }
 
   if (completed) {
+    const rewardMessage = coinsEarned != null
+      ? `You finished the whole lesson! Great job, defender!\n+${coinsEarned} 🪙 earned for your garden!`
+      : 'You finished the whole lesson! Great job, defender!'
+
     return (
       <ScoreScreen
         title="Lesson Complete!"
         score={lessonData.length}
         total={lessonData.length}
-        message="You finished the whole lesson! Great job, defender!"
+        message={rewardMessage}
         onRetry={() => {
           setCurrentStep(0)
           setSelectedAnswer(null)
           setFeedback(false)
           setCompleted(false)
+          setCoinsEarned(null)
+          rewardApplied.current = false
         }}
         onContinue={() => setCurrentView(returnView)}
       />

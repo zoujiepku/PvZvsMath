@@ -11,7 +11,9 @@ import Lesson from './components/Lesson'
 import Quiz from './components/Quiz'
 import Practice from './components/Practice'
 import { Peashooter, Zombie } from './components/characters'
+import CoinDisplay from './components/CoinDisplay'
 import NumberLineBlaster from './components/games/NumberLineBlaster'
+import CrazyDavesGarden from './components/games/garden/CrazyDavesGarden'
 import { chapter1Lesson, chapter1Quiz, chapter1PracticeConfig, generatePracticeProblem as generateCh1 } from './data/chapter1'
 import { chapter2Lesson, chapter2Quiz, chapter2PracticeConfig, generatePracticeProblem as generateCh2 } from './data/chapter2'
 import { chapter3Lesson, chapter3Quiz, chapter3PracticeConfig, generatePracticeProblem as generateCh3 } from './data/chapter3'
@@ -39,20 +41,24 @@ function App() {
           <h1>PvZ vs Math</h1>
           <Zombie size={36} animate />
         </div>
-        <p className="subtitle">Defend the Lawn with Math!</p>
+        <div className="header-sub-row">
+          <p className="subtitle">Defend the Lawn with Math!</p>
+          <CoinDisplay />
+        </div>
       </header>
 
       {currentView === 'home' && <Home setCurrentView={setCurrentView} />}
       {currentView === 'game-nlb' && <NumberLineBlaster setCurrentView={setCurrentView} />}
+      {currentView === 'game-garden' && <CrazyDavesGarden setCurrentView={setCurrentView} chapters={chapters} />}
 
       {chapters.map(ch => (
         <span key={ch.id}>
           {currentView === ch.id && <ch.Hub setCurrentView={setCurrentView} />}
           {currentView === `${ch.id}-lesson` && (
-            <Lesson lessonData={ch.lesson} setCurrentView={setCurrentView} returnView={ch.id} />
+            <Lesson lessonData={ch.lesson} setCurrentView={setCurrentView} returnView={ch.id} chapterId={ch.id} />
           )}
           {currentView === `${ch.id}-quiz` && (
-            <Quiz quizData={ch.quiz} setCurrentView={setCurrentView} returnView={ch.id} />
+            <Quiz quizData={ch.quiz} setCurrentView={setCurrentView} returnView={ch.id} chapterId={ch.id} />
           )}
           {currentView === `${ch.id}-practice` && (
             <Practice

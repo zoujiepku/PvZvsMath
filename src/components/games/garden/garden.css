@@ -1,0 +1,1050 @@
+/* === Math for Coins === */
+.math-for-coins {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mfc-header {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.mfc-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.4rem 0;
+}
+
+.mfc-session {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.9rem;
+  color: #4CAF50;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.mfc-chapter-select {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+/* === Tutorial === */
+.garden-tutorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.tutorial-nav {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* === Welcome Back === */
+.garden-welcome-back {
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #FFD700;
+  text-shadow: 2px 2px 0 #000;
+  background: rgba(46, 125, 50, 0.85);
+  border: 2px solid #1B5E20;
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  animation: garden-msg-fade 3s ease-out forwards;
+}
+
+/* === Garden HUD === */
+.garden-hud {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+.garden-hud .minecraft-button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.garden-coins {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.1rem;
+  color: #FFD700;
+  text-shadow: 2px 2px 0 #000;
+  margin-right: auto;
+}
+
+.garden-message {
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.1rem;
+  color: #FFF;
+  background: rgba(0,0,0,0.5);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  animation: garden-msg-fade 2.5s ease-out forwards;
+}
+
+@keyframes garden-msg-fade {
+  0%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* === Garden Field (10x10 grid layout) === */
+.garden-field {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* square aspect ratio */
+  background: radial-gradient(circle, #5DA85D 0%, #4A8B3F 40%, #3D7A34 70%, #2E6B28 100%);
+  border: 4px solid #1B5E20;
+  border-radius: 12px;
+  box-shadow: 0 6px 0 #1B5E20, 0 10px 20px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+/* === Center Vault (positioned at grid center cell) === */
+.garden-center {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.garden-center-label {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.7rem;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
+  margin-top: 0.15rem;
+}
+
+/* === Garden Plot === */
+.garden-plot {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.garden-plot:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 3;
+}
+
+.garden-plot-empty {
+  background: rgba(139, 90, 43, 0.5);
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+}
+
+.garden-plot-empty:hover {
+  background: rgba(139, 90, 43, 0.7);
+  border-color: #FFD700;
+}
+
+.plot-empty-icon {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.garden-plot-locked {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.garden-plot-locked:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.plot-lock {
+  font-size: 1.2rem;
+}
+
+.plot-cost {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.6rem;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.garden-plot-planted {
+  background: rgba(101, 67, 33, 0.4);
+  border: 2px solid rgba(139, 90, 43, 0.6);
+}
+
+.garden-plot-ready {
+  border-color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  animation: garden-plot-glow 2s ease-in-out infinite;
+}
+
+@keyframes garden-plot-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); }
+  50% { box-shadow: 0 0 16px rgba(255, 215, 0, 0.6); }
+}
+
+/* === Plant Display === */
+.garden-plant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.garden-plant-mature {
+  animation: garden-plant-breathe 3s ease-in-out infinite;
+}
+
+@keyframes garden-plant-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.garden-seed {
+  font-size: 1rem;
+}
+
+.garden-mutation-badge {
+  position: absolute;
+  bottom: -10px;
+  font-size: 0.45rem;
+  font-family: 'Luckiest Guy', cursive;
+  color: #000;
+  padding: 0 3px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* === Plot Progress Bar === */
+.plot-progress-bar {
+  width: 40px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.plot-progress-fill {
+  height: 100%;
+  background: #4CAF50;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* === Plot Action Buttons === */
+.plot-actions {
+  display: flex;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.plot-btn {
+  font-size: 0.65rem;
+  padding: 1px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #FFF;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.2s;
+}
+
+.plot-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.plot-btn-water {
+  background: rgba(33, 150, 243, 0.5);
+}
+
+.plot-btn-water:hover {
+  background: rgba(33, 150, 243, 0.7);
+}
+
+.plot-btn-harvest {
+  background: rgba(255, 193, 7, 0.5);
+}
+
+.plot-btn-harvest:hover {
+  background: rgba(255, 193, 7, 0.7);
+}
+
+.plot-btn-active {
+  background: rgba(76, 175, 80, 0.7);
+  border-color: #FFD700;
+}
+
+/* === Seed Shop Overlay === */
+.garden-shop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.garden-shop {
+  background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%);
+  border: 4px solid #1B5E20;
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 0 #1B5E20, 0 12px 30px rgba(0,0,0,0.5);
+}
+
+.garden-shop h2 {
+  color: #FFD700;
+  font-family: 'Luckiest Guy', cursive;
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.shop-coins {
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
+  margin-bottom: 0.5rem;
+}
+
+.shop-hint {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.8rem;
+  color: #81D4FA;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.shop-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.shop-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  color: #FFF;
+  text-align: left;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.shop-item:hover:not(.shop-item-disabled) {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: #FFD700;
+}
+
+.shop-item-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.shop-item-icon {
+  flex-shrink: 0;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.shop-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.shop-item-name {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.shop-item-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.shop-item-stats {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* === Watering Session Overlay === */
+.garden-water-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.garden-water-session {
+  background: linear-gradient(135deg, #1565C0 0%, #1976D2 100%);
+  border: 4px solid #0D47A1;
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 500px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 0 #0D47A1, 0 12px 30px rgba(0,0,0,0.5);
+}
+
+.water-header {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.water-header h2 {
+  color: #81D4FA;
+  font-family: 'Luckiest Guy', cursive;
+  text-shadow: 2px 2px 0 #000;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.water-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 0.3rem;
+}
+
+.water-progress span {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  color: #FFF;
+}
+
+.water-progress-bar {
+  width: 120px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.water-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  border-radius: 5px;
+  transition: width 0.4s;
+}
+
+.water-chapter-select {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.water-done {
+  text-align: center;
+  padding: 1rem;
+  color: #FFF;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.water-done p {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* === Watering Rewards Row === */
+.water-rewards-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+.water-session-coins {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.85rem;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* === Coin Alert === */
+.garden-coin-alert {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #4CAF50;
+  text-shadow: 1px 1px 0 #000;
+  animation: coin-float 1.5s ease-out forwards;
+}
+
+@keyframes coin-float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-15px); opacity: 0; }
+}
+
+/* === Mutation Alert === */
+.garden-mutation-alert {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.1rem;
+  color: #FFD700;
+  text-shadow: 2px 2px 0 #000;
+  animation: garden-mutation-pop 0.5s ease-out;
+}
+
+@keyframes garden-mutation-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ========================================
+   BATTLE SYSTEM
+   ======================================== */
+
+/* === Wave Select === */
+.battle-select, .battle-placing, .battle-results {
+  text-align: center;
+}
+
+.battle-select h2, .battle-placing h2 {
+  color: #FFD700;
+  font-family: 'Luckiest Guy', cursive;
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 0.3rem;
+}
+
+.battle-subtitle {
+  color: #FFF;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.wave-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+/* === Plant Placement === */
+.battle-inventory {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.battle-inv-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #FFF;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.battle-inv-item:hover {
+  border-color: #FFD700;
+}
+
+.battle-inv-selected {
+  border-color: #FFD700;
+  background: rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.battle-placed-plant {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.battle-place-zone {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  transform: translate(-50%, -50%);
+  border: 2px dashed rgba(255, 215, 0, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.battle-place-zone:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #FFD700;
+}
+
+.battle-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* === Active Battle === */
+.battle-active {
+  position: relative;
+}
+
+.battle-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  margin-bottom: 0.3rem;
+  font-family: 'Luckiest Guy', cursive;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
+  font-size: 0.9rem;
+}
+
+.battle-field {
+  cursor: default;
+}
+
+/* === Battle Entities === */
+.battle-entity {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.battle-zombie-entity {
+  z-index: 3;
+  animation: zombie-shamble 0.5s ease-in-out infinite alternate;
+}
+
+.battle-zombie-entity.battle-zombie-slowed {
+  animation-duration: 0.9s;
+}
+
+.battle-zombie-attacking {
+  animation: zombie-attack 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes zombie-shamble {
+  0% { transform: translate(-50%, -50%) rotate(-3deg) translateY(0); }
+  50% { transform: translate(-50%, -50%) rotate(2deg) translateY(-1.5px); }
+  100% { transform: translate(-50%, -50%) rotate(-2deg) translateY(1px); }
+}
+
+@keyframes zombie-attack {
+  0% { transform: translate(-50%, -50%) rotate(-5deg); }
+  100% { transform: translate(-50%, -50%) rotate(5deg); }
+}
+
+.zombie-hat {
+  position: absolute;
+  top: -8px;
+  font-size: 0.5rem;
+}
+
+/* === HP Bars === */
+.battle-hp-bar {
+  width: 24px;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 1px;
+}
+
+.battle-hp-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.15s;
+}
+
+.battle-hp-green {
+  background: #4CAF50;
+}
+
+.battle-hp-red {
+  background: #f44336;
+}
+
+/* === Projectiles === */
+.battle-pea {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #8BC34A;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  box-shadow: 0 0 4px rgba(139, 195, 74, 0.6);
+}
+
+.battle-pea-fire {
+  background: #FF5722;
+  box-shadow: 0 0 6px rgba(255, 87, 34, 0.8);
+}
+
+/* === Battle Results === */
+.battle-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+.battle-plant-report {
+  margin: 0.5rem 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+}
+
+.battle-survived {
+  color: #4CAF50;
+}
+
+.battle-fallen {
+  color: #FFB74D;
+}
+
+.battle-perfect {
+  color: #FFD700;
+  font-family: 'Luckiest Guy', cursive;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* === Shop tabs === */
+.shop-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  justify-content: center;
+}
+
+.shop-tabs .plot-btn {
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.shop-item-locked {
+  opacity: 0.5;
+  filter: grayscale(0.6);
+  cursor: not-allowed;
+}
+
+.shop-item-locked-text {
+  color: #FF9800;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.shop-item-owned {
+  color: #4CAF50;
+  font-weight: 600;
+  margin-left: 0.3rem;
+}
+
+.shop-item-type-badge {
+  margin-left: 0.3rem;
+  font-size: 0.75rem;
+}
+
+/* === Garden items bar === */
+.garden-items-bar {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.garden-item-btn {
+  background: #37474F;
+  color: #FFF;
+  border: 2px solid #546E7A;
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.garden-item-btn:hover {
+  border-color: #FFD700;
+  background: #455A64;
+}
+
+.garden-item-active {
+  border-color: #FFD700;
+  background: #5D4037;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.garden-active-item {
+  text-align: center;
+  color: #FFD700;
+  font-size: 0.85rem;
+  padding: 0.3rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
+}
+
+/* === Battle items bar === */
+.battle-items-bar {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin: 0.3rem 0;
+}
+
+.battle-item-btn {
+  background: #1B5E20;
+  color: #FFF;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.battle-item-btn:hover {
+  background: #2E7D32;
+  border-color: #FFD700;
+  transform: scale(1.05);
+}
+
+/* === Active targeting item button === */
+.battle-item-active {
+  border-color: #FFD700;
+  background: #4E342E;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+/* === Targeting mode === */
+.battle-targeting {
+  cursor: crosshair;
+}
+
+.battle-targeting-banner {
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.85rem;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  margin: 0.3rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.battle-targetable {
+  cursor: pointer;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+  z-index: 5;
+}
+
+.battle-targetable:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
+}
+
+.battle-targetable-zombie {
+  cursor: crosshair;
+  z-index: 5;
+}
+
+.battle-targetable-zombie:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.8));
+}
+
+/* === x2 doubled plant === */
+.battle-plant-doubled {
+  filter: drop-shadow(0 0 6px #FF9800) drop-shadow(0 0 12px #FF5722);
+}
+
+.battle-buff-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.5rem;
+  color: #FFF;
+  background: #FF5722;
+  border-radius: 4px;
+  padding: 0 3px;
+  text-shadow: none;
+  line-height: 1.2;
+}
+
+/* === Chomper chomp animation === */
+.battle-chomper-chomping {
+  animation: chomper-bite 0.3s ease-in-out 2 !important;
+  filter: drop-shadow(0 0 8px #4CAF50) drop-shadow(0 0 16px #2E7D32);
+}
+
+@keyframes chomper-bite {
+  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  30% { transform: translate(-50%, -50%) scale(1.4) rotate(-10deg); }
+  60% { transform: translate(-50%, -50%) scale(0.9) rotate(5deg); }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+}
+
+/* === Chomp text effect === */
+.battle-chomp-effect {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.1rem;
+  color: #FF5722;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
+  z-index: 10;
+  pointer-events: none;
+  animation: chomp-pop 0.6s ease-out forwards;
+}
+
+@keyframes chomp-pop {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+  100% { opacity: 0; transform: translate(-50%, -80%) scale(0.8); }
+}
+
+/* === Pizza decoy === */
+.battle-decoy {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  z-index: 3;
+  animation: pizza-pulse 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 193, 7, 0.8));
+}
+
+@keyframes pizza-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* === Ice projectile === */
+.battle-pea-ice {
+  background: #81D4FA !important;
+  box-shadow: 0 0 6px #4FC3F7, 0 0 12px rgba(129, 212, 250, 0.5) !important;
+}
+
+/* === Slowed zombie === */
+.battle-zombie-slowed {
+  filter: brightness(0.7) hue-rotate(180deg);
+}
+
+/* === Supercharged plant === */
+.battle-supercharged {
+  filter: drop-shadow(0 0 8px #FFD700) drop-shadow(0 0 16px #FF9800);
+  animation: supercharge-pulse 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes supercharge-pulse {
+  from { transform: translate(-50%, -50%) scale(1); }
+  to { transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* === Home page stars === */
+.home-stars {
+  color: #FFD700;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.chapter-stars {
+  color: #FFD700;
+  font-size: 0.85rem;
+}
+
+.chapter-unlock-hint {
+  display: block;
+  font-size: 0.7rem;
+  color: #4E342E;
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+
+/* === Practice rewards === */
+.practice-rewards-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.practice-session-coins {
+  color: #FFD700;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-shadow: 1px 1px 0 #000;
+}

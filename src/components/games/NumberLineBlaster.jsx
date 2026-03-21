@@ -4,9 +4,10 @@ import { Peashooter, Zombie, Sun, CrazyDave, Sunflower, WallNut } from '../chara
 
 const worldIcons = [Peashooter, WallNut, Sun, Sunflower, CrazyDave, Zombie]
 
-function formatNumber(n) {
+function formatNumber(n, useDecimals = false) {
   if (Number.isNaN(n) || !Number.isFinite(n)) return '?'
   if (Math.abs(n - Math.round(n)) < 0.0001) return Math.round(n).toString()
+  if (useDecimals) return parseFloat(n.toFixed(2)).toString()
   const whole = Math.floor(n)
   const frac = n - whole
   const fracs = [
@@ -57,6 +58,9 @@ function NumberLineBlaster({ setCurrentView }) {
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState('')
   const [showHint, setShowHint] = useState(false)
+  const [firing, setFiring] = useState(false)
+  const [celebration, setCelebration] = useState(null) // null | 'hit' | 'victory'
+  const [particles, setParticles] = useState([])
   const [completed, setCompleted] = useState(() => {
     try { return JSON.parse(localStorage.getItem('nlb-progress') || '{}') }
     catch { return {} }
@@ -69,6 +73,8 @@ function NumberLineBlaster({ setCurrentView }) {
   const level = (phase === 'playing' || phase === 'victory')
     ? worlds[worldIdx].levels[levelIdx]
     : null
+  const isDecimalWorld = worlds[worldIdx]?.description === 'Decimals'
+  const fmt = (n) => formatNumber(n, isDecimalWorld)
   const start = level?.start || 0
   const chainResult = chain.length > 0 ? evalChain(start, chain) : start
   const isValidResult = Number.isFinite(chainResult) && !Number.isNaN(chainResult)
@@ -92,7 +98,29 @@ function NumberLineBlaster({ setCurrentView }) {
     setMessage('')
     setMessageType('')
     setShowHint(false)
+    setFiring(false)
+    setCelebration(null)
+    setParticles([])
     setPhase('playing')
+  }
+
+  function spawnParticles(type) {
+    const emojis = type === 'victory'
+      ? ['🎉', '⭐', '🌟', '✨', '🏆', '🎊', '💥', '☀️']
+      : ['💥', '✨', '⭐', '🔥']
+    const count = type === 'victory' ? 20 : 8
+    const newParticles = Array.from({ length: count }, (_, i) => ({
+      id: Date.now() + i,
+      emoji: emojis[Math.floor(Math.random() * emojis.length)],
+      x: 30 + Math.random() * 40,
+      y: 20 + Math.random() * 40,
+      dx: (Math.random() - 0.5) * 60,
+      dy: -30 - Math.random() * 40,
+      rotation: Math.random() * 360,
+      scale: 0.6 + Math.random() * 0.8,
+      delay: Math.random() * 0.3,
+    }))
+    setParticles(newParticles)
   }
 
   function addToChain(card) {
@@ -116,33 +144,43 @@ function NumberLineBlaster({ setCurrentView }) {
   }
 
   function fire() {
-    if (chain.length === 0 || !isValidResult) return
+    if (chain.length === 0 || !isValidResult || firing) return
     const result = evalChain(start, chain)
     const hitIdx = zombies.findIndex(z => z.alive && Math.abs(z.position - result) < 0.001)
     const newShots = shots + 1
     setShots(newShots)
     setChain([])
+    setFiring(true)
 
     if (hitIdx >= 0) {
-      const newZombies = zombies.map((z, i) => i === hitIdx ? { ...z, alive: false } : z)
-      setZombies(newZombies)
-      if (newZombies.every(z => !z.alive)) {
-        const par = level.par || zombies.length
-        let stars = 1
-        if (hand.length > 0) stars = 2
-        if (newShots <= par) stars = 3
-        const key = `${worldIdx}-${levelIdx}`
-        setCompleted(prev => ({ ...prev, [key]: Math.max(prev[key] || 0, stars) }))
-        setMessage(`All zombies defeated in ${newShots} shot${newShots > 1 ? 's' : ''}!`)
-        setMessageType('hit')
-        setTimeout(() => setPhase('victory'), 1000)
-      } else {
-        setMessage('Direct hit!')
-        setMessageType('hit')
-      }
+      // Brief pause to show the pea traveling, then destroy
+      setTimeout(() => {
+        const newZombies = zombies.map((z, i) => i === hitIdx ? { ...z, alive: false } : z)
+        setZombies(newZombies)
+        if (newZombies.every(z => !z.alive)) {
+          const par = level.par || zombies.length
+          let stars = 1
+          if (hand.length > 0) stars = 2
+          if (newShots <= par) stars = 3
+          const key = `${worldIdx}-${levelIdx}`
+          setCompleted(prev => ({ ...prev, [key]: Math.max(prev[key] || 0, stars) }))
+          setMessage(`All zombies defeated in ${newShots} shot${newShots > 1 ? 's' : ''}!`)
+          setMessageType('hit')
+          setCelebration('victory')
+          spawnParticles('victory')
+          setTimeout(() => { setFiring(false); setCelebration(null); setParticles([]); setPhase('victory') }, 3000)
+        } else {
+          setMessage('Direct hit!')
+          setMessageType('hit')
+          setCelebration('hit')
+          spawnParticles('hit')
+          setTimeout(() => { setFiring(false); setCelebration(null); setParticles([]) }, 1500)
+        }
+      }, 600)
     } else {
-      setMessage(`Missed! Pea landed at ${formatNumber(result)}`)
+      setMessage(`Missed! Pea landed at ${fmt(result)}`)
       setMessageType('miss')
+      setTimeout(() => setFiring(false), 800)
     }
   }
 
@@ -291,6 +329,37 @@ function NumberLineBlaster({ setCurrentView }) {
         </div>
       )}
 
+      {/* Celebration overlay */}
+      {celebration && (
+        <div className={`nlb-celebration ${celebration === 'victory' ? 'nlb-celebration-victory' : 'nlb-celebration-hit'}`}>
+          {celebration === 'victory' && (
+            <div className="nlb-victory-text">
+              <Peashooter size={48} animate />
+              <span>VICTORY!</span>
+              <Peashooter size={48} animate />
+            </div>
+          )}
+          {particles.map(p => (
+            <span
+              key={p.id}
+              className="nlb-particle"
+              style={{
+                left: `${p.x}%`,
+                top: `${p.y}%`,
+                '--dx': `${p.dx}px`,
+                '--dy': `${p.dy}px`,
+                '--rot': `${p.rotation}deg`,
+                '--scale': p.scale,
+                animationDelay: `${p.delay}s`,
+                fontSize: `${1.2 * p.scale}rem`,
+              }}
+            >
+              {p.emoji}
+            </span>
+          ))}
+        </div>
+      )}
+
       {/* Number Line */}
       <div className="nlb-line-area">
         <div className="nlb-line">
@@ -299,7 +368,7 @@ function NumberLineBlaster({ setCurrentView }) {
           {ticks.map(({ value, showLabel }) => (
             <div key={value} className="nlb-tick" style={{ left: `${getPos(value)}%` }}>
               <div className="nlb-tick-mark" />
-              {showLabel && <div className="nlb-tick-label">{formatNumber(value)}</div>}
+              {showLabel && <div className="nlb-tick-label">{fmt(value)}</div>}
             </div>
           ))}
 
@@ -310,14 +379,14 @@ function NumberLineBlaster({ setCurrentView }) {
               style={{ left: `${getPos(z.position)}%` }}
             >
               {z.alive ? <Zombie size={44} animate /> : <span style={{ fontSize: '1.5rem' }}>💥</span>}
-              <div className="nlb-zombie-pos">{formatNumber(z.position)}</div>
+              <div className="nlb-zombie-pos">{fmt(z.position)}</div>
             </div>
           ))}
 
           {chain.length > 0 && isValidResult && (
             <div className="nlb-pea-marker" style={{ left: `${getPos(chainResult)}%` }}>
               <div className="nlb-pea-dot" />
-              <div className="nlb-pea-label">{formatNumber(chainResult)}</div>
+              <div className="nlb-pea-label">{fmt(chainResult)}</div>
             </div>
           )}
         </div>
@@ -331,7 +400,7 @@ function NumberLineBlaster({ setCurrentView }) {
             <span className="nlb-chain-empty">Click cards below to build your chain</span>
           ) : (
             <>
-              <span className="nlb-chain-value">{formatNumber(start)}</span>
+              <span className="nlb-chain-value">{fmt(start)}</span>
               {chain.map((card, i) => (
                 <Fragment key={card.id}>
                   <span className="nlb-chain-arrow">{'\u2192'}</span>
@@ -343,7 +412,7 @@ function NumberLineBlaster({ setCurrentView }) {
                     {card.label}
                   </button>
                   <span className="nlb-chain-arrow">{'\u2192'}</span>
-                  <span className="nlb-chain-value">{formatNumber(intermediates[i + 1])}</span>
+                  <span className="nlb-chain-value">{fmt(intermediates[i + 1])}</span>
                 </Fragment>
               ))}
             </>
@@ -381,7 +450,7 @@ function NumberLineBlaster({ setCurrentView }) {
 
       {/* Actions */}
       <div className="nlb-actions">
-        <button className="minecraft-button" onClick={fire} disabled={chain.length === 0 || !isValidResult}>
+        <button className="minecraft-button" onClick={fire} disabled={chain.length === 0 || !isValidResult || firing}>
           Fire!
         </button>
         <button className="minecraft-button secondary" onClick={resetChain} disabled={chain.length === 0}>
