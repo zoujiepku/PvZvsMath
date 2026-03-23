@@ -26,6 +26,15 @@ export const ITEMS = {
     emoji: '🌟',
     requiredStars: 6,
   },
+  flowerpot: {
+    name: 'Flower Pot',
+    description: 'Move your plants to different plots',
+    cost: 50,
+    type: 'garden',
+    emoji: '🪴',
+    requiredWave: 3,
+    requiresItem: 'shovel',
+  },
 
   // Battle items
   freeze: {
@@ -85,6 +94,14 @@ export const ITEMS = {
     type: 'battle',
     emoji: '🍕',
     requiredChapter: 'chapter2',
+  },
+  doomshroom: {
+    name: 'Doom-shroom',
+    description: 'Last resort! If zombies reach the vault, ALL zombies die instead. One-time use.',
+    cost: 1000,
+    type: 'battle',
+    emoji: '☠️',
+    requiresPlant: 'snowpea',
   },
 }
 

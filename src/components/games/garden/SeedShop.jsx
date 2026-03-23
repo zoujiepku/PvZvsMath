@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { PLANT_TYPES } from './gardenData'
 import { ITEMS, getGardenItems, getBattleItems } from './itemData'
-import { Peashooter, Sunflower, WallNut, Chomper, SnowPea, Repeater, CherryBomb } from '../../characters'
+import { Peashooter, Sunflower, WallNut, Chomper, SnowPea, Repeater, CherryBomb, CabbagePult, KernelPult } from '../../characters'
 
 const PLANT_ICONS = {
   sunflower: Sunflower,
@@ -11,6 +11,8 @@ const PLANT_ICONS = {
   snowpea: SnowPea,
   repeater: Repeater,
   cherrybomb: CherryBomb,
+  cabbagepult: CabbagePult,
+  kernelpult: KernelPult,
 }
 
 const CHAPTER_NAMES = {
@@ -22,7 +24,7 @@ const CHAPTER_NAMES = {
   chapter6: 'Ch6 Quiz',
 }
 
-function SeedShop({ coins, onBuy, onBuyItem, onClose, browseOnly, unlockedPlants, unlockedItems, inventory }) {
+function SeedShop({ coins, onBuy, onBuyItem, onClose, browseOnly, unlockedPlants, unlockedItems, inventory, highestWave, plots }) {
   const [tab, setTab] = useState('plants')
   const plantTypes = Object.entries(PLANT_TYPES)
   const allItems = [...getGardenItems(), ...getBattleItems()]
@@ -91,14 +93,23 @@ function SeedShop({ coins, onBuy, onBuyItem, onClose, browseOnly, unlockedPlants
         {tab === 'items' && (
           <div className="shop-items">
             {allItems.map(([key, item]) => {
-              const isLocked = !unlockedItems?.includes(key)
+              const needsItem = item.requiresItem && !(inventory?.[item.requiresItem] > 0)
+              const needsWave = item.requiredWave && (highestWave || 0) < item.requiredWave
+              const needsPlant = item.requiresPlant && !(plots || []).some(p => p.plant?.type === item.requiresPlant)
+              const isLocked = needsItem || needsWave || needsPlant || (!item.requiredWave && !item.requiresItem && !item.requiresPlant && !unlockedItems?.includes(key))
               const canAfford = coins >= item.cost && !isLocked
               const owned = inventory?.[key] || 0
-              const lockReason = item.requiredChapter
-                ? `Complete ${CHAPTER_NAMES[item.requiredChapter]} to unlock`
-                : item.requiredStars
-                  ? `Need ${item.requiredStars}★ total mastery`
-                  : ''
+              const lockReason = needsPlant
+                ? `Grow a ${PLANT_TYPES[item.requiresPlant]?.name || item.requiresPlant} first`
+                : needsWave
+                  ? `Beat Wave ${item.requiredWave} to unlock`
+                  : needsItem
+                    ? `Buy a ${ITEMS[item.requiresItem]?.name} first`
+                    : item.requiredChapter
+                      ? `Complete ${CHAPTER_NAMES[item.requiredChapter]} to unlock`
+                      : item.requiredStars
+                        ? `Need ${item.requiredStars}★ total mastery`
+                        : ''
               return (
                 <button
                   key={key}

@@ -24,7 +24,8 @@ function getCardClass(card) {
   switch (card.op) {
     case '+': return 'nlb-card-add'
     case '-': return 'nlb-card-sub'
-    case '\u00D7': case '\u00F7': return 'nlb-card-mul'
+    case '\u00D7': return 'nlb-card-mul'
+    case '\u00F7': return 'nlb-card-div'
     case 'sq': case 'cube': return 'nlb-card-pow'
     case 'sqrt': return 'nlb-card-root'
     default: return ''

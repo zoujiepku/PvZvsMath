@@ -87,6 +87,54 @@
   margin-right: auto;
 }
 
+/* === Garden Mode container === */
+.garden-mode {
+  position: relative;
+}
+
+/* === Shovel Choice Popup === */
+.shovel-choice-popup {
+  background: linear-gradient(180deg, #4E342E, #3E2723);
+  border: 3px solid #8D6E63;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.shovel-choice-popup h3 {
+  color: #FFD700;
+  font-family: 'Luckiest Guy', cursive;
+  text-shadow: 2px 2px 0 #000;
+  margin: 0 0 0.2rem;
+}
+
+.shovel-choice-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.shovel-choice-buttons .minecraft-button {
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+/* === Nursery item === */
+.nursery-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nursery-item .minecraft-button {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+
 .garden-message {
   text-align: center;
   font-family: 'Luckiest Guy', cursive;
@@ -997,9 +1045,144 @@
   box-shadow: 0 0 6px #4FC3F7, 0 0 12px rgba(129, 212, 250, 0.5) !important;
 }
 
+/* === Kernel projectile === */
+.battle-pea-kernel {
+  background: #FFD54F !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 4px rgba(255, 193, 7, 0.6) !important;
+}
+
+/* === Cabbage projectile === */
+.battle-pea-cabbage {
+  background: #66BB6A !important;
+  width: 7px !important;
+  height: 7px !important;
+  box-shadow: 0 0 4px rgba(102, 187, 106, 0.6) !important;
+}
+
+/* === Butter projectile === */
+.battle-pea-butter {
+  background: #FFD54F !important;
+  width: 6px !important;
+  height: 5px !important;
+  border-radius: 1px !important;
+  box-shadow: 0 0 6px #FFC107, 0 0 10px rgba(255, 213, 79, 0.6) !important;
+}
+
 /* === Slowed zombie === */
 .battle-zombie-slowed {
   filter: brightness(0.7) hue-rotate(180deg);
+}
+
+/* === Butter-frozen zombie === */
+.battle-zombie-buttered {
+  filter: brightness(1.2) saturate(1.5) sepia(0.4);
+  animation: none !important;
+}
+
+/* === Hypnotized zombie === */
+.battle-zombie-hypnotized {
+  filter: hue-rotate(120deg) brightness(1.2);
+}
+
+/* === Shield pulse effect === */
+.battle-shield-pulse {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid rgba(33, 150, 243, 0.7);
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  pointer-events: none;
+  animation: shield-pulse 1.5s ease-out forwards;
+}
+
+@keyframes shield-pulse {
+  0% { width: 0; height: 0; opacity: 1; }
+  100% { width: 80px; height: 80px; opacity: 0; }
+}
+
+/* === Vault shield indicator === */
+.vault-shield-indicator {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 0.6rem;
+}
+
+/* === Buff selection === */
+.buff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.buff-btn {
+  display: flex !important;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: left !important;
+  padding: 0.5rem 0.8rem !important;
+}
+
+.buff-btn.buff-selected {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.buff-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.buff-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.buff-info strong {
+  font-size: 0.9rem;
+}
+
+.buff-info span {
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+/* === Doom-shroom === */
+.doom-shroom-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.doom-shroom-count {
+  font-family: 'Luckiest Guy', cursive;
+  color: #CE93D8;
+  font-size: 1rem;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.doom-shroom-explosion {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-family: 'Luckiest Guy', cursive;
+  color: #CE93D8;
+  text-shadow: 0 0 20px #6A1B9A, 0 0 40px #4A148C, 2px 2px 0 #000;
+  z-index: 50;
+  animation: doom-boom 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes doom-boom {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+  30% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
 }
 
 /* === Supercharged plant === */
@@ -1011,6 +1194,23 @@
 @keyframes supercharge-pulse {
   from { transform: translate(-50%, -50%) scale(1); }
   to { transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* === Pole Vaulter zombie === */
+.battle-zombie-vaulting {
+  animation: zombie-vault 0.4s ease-in-out !important;
+  z-index: 10;
+}
+
+@keyframes zombie-vault {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -120%) scale(1.3); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.zombie-polevaulter {
+  font-size: 0.6rem;
+  left: 2px;
 }
 
 /* === Home page stars === */

@@ -35,6 +35,7 @@ const DEFAULT_STATE = {
   lastVisit: Date.now(),
   tutorialSeen: false,
   inventory: { ...STARTER_BATTLE_ITEMS },
+  nursery: [],
 }
 
 export function loadGarden() {
@@ -70,8 +71,9 @@ export function loadGarden() {
 
     if (saved.version !== 5) return { ...DEFAULT_STATE, lastVisit: Date.now() }
 
-    // Backward compatibility: add inventory if missing
+    // Backward compatibility: add inventory and nursery if missing
     if (!saved.inventory) saved.inventory = {}
+    if (!saved.nursery) saved.nursery = []
 
     // Wilt check: mature plants revert to "growing" if not watered in time
     const wiltMs = WILT_HOURS * 60 * 60 * 1000

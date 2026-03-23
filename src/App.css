@@ -1030,6 +1030,11 @@
   border-color: #0D47A1;
 }
 
+.nlb-card-div {
+  background: linear-gradient(180deg, #26C6DA, #0097A7);
+  border-color: #006064;
+}
+
 .nlb-card-pow {
   background: linear-gradient(180deg, #FF9800, #E65100);
   border-color: #BF360C;

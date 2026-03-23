@@ -63,6 +63,22 @@ export const PLANT_TYPES = {
     description: 'Single-use explosion! Massive area damage.',
     requiredChapter: 'chapter6',
   },
+  cabbagepult: {
+    name: 'Cabbage-pult',
+    seedCost: 75,
+    growthTicksNeeded: 6,
+    sellValue: 130,
+    emoji: '🥬',
+    description: 'Lobs cabbages over obstacles. Steady damage dealer.',
+  },
+  kernelpult: {
+    name: 'Kernel-pult',
+    seedCost: 100,
+    growthTicksNeeded: 10,
+    sellValue: 160,
+    emoji: '🌽',
+    description: '20% chance to lob butter that freezes zombies for 5s!',
+  },
 }
 
 export const MUTATIONS = {

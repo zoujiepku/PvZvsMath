@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Zombie, Peashooter, Sunflower, WallNut, Chomper, CrazyDave, SnowPea, Repeater, CherryBomb } from '../../characters'
+import { Zombie, Peashooter, Sunflower, WallNut, Chomper, CrazyDave, SnowPea, Repeater, CherryBomb, CabbagePult, KernelPult } from '../../characters'
 import { getGrowthStage, getPlotPosition, GRID_CENTER } from './gardenData'
 import {
   ZOMBIE_TYPES, PLANT_BATTLE_STATS, WAVES,
@@ -8,15 +8,19 @@ import {
 import { removePlantsForBattle, applyBattleReward, returnPlantsAfterBattle, useItem } from './economy'
 import { getBattleItems } from './itemData'
 
-const PLANT_COMPONENTS = { peashooter: Peashooter, sunflower: Sunflower, wallnut: WallNut, chomper: Chomper, snowpea: SnowPea, repeater: Repeater, cherrybomb: CherryBomb }
+const PLANT_COMPONENTS = { peashooter: Peashooter, sunflower: Sunflower, wallnut: WallNut, chomper: Chomper, snowpea: SnowPea, repeater: Repeater, cherrybomb: CherryBomb, cabbagepult: CabbagePult, kernelpult: KernelPult }
 
 let nextId = 0
 function uid() { return ++nextId }
 
 function DefendMode({ gardenState, dispatch, onBack }) {
-  const [phase, setPhase] = useState('select') // select | fighting | won | lost
+  const [phase, setPhase] = useState('select') // select | buff | fighting | won | lost
   const [waveIndex, setWaveIndex] = useState(0)
   const [activeTargetItem, setActiveTargetItem] = useState(null)
+  const [doomShroomActive, setDoomShroomActive] = useState(false)
+  const doomShroomUsedRef = useRef(false)
+  const [activeBuff, setActiveBuff] = useState(null) // 'hypnotize' | 'shield' | 'doublecoins'
+  const [pendingWaveIdx, setPendingWaveIdx] = useState(null)
 
   // Battle state in ref for game loop performance
   const battleRef = useRef({
@@ -48,6 +52,13 @@ function DefendMode({ gardenState, dispatch, onBack }) {
     const gardenPlants = collectGardenPlants()
     if (gardenPlants.length === 0) return
 
+    setPendingWaveIdx(idx)
+    setActiveBuff(null)
+    setPhase('buff')
+  }
+
+  function startBattle() {
+    const idx = pendingWaveIdx
     setWaveIndex(idx)
 
     const wave = WAVES[idx]
@@ -74,10 +85,20 @@ function DefendMode({ gardenState, dispatch, onBack }) {
     b.superchargedPlants = {}
     b.decoys = []
     b.chompEffects = []
+    b.hypnotizeLeft = activeBuff === 'hypnotize' ? 3 : 0
+    b.shieldNextAt = activeBuff === 'shield' ? 0 : null // shield available immediately, then every 60s
+    b.doubleCoins = activeBuff === 'doublecoins'
 
     // Remove plants from garden during battle
     const plotIndices = gardenPlants.map(p => p.plotIndex)
     dispatch(prev => removePlantsForBattle(prev, plotIndices))
+
+    doomShroomUsedRef.current = false
+
+    // Consume doom-shroom from inventory if activated
+    if (doomShroomActive) {
+      dispatch(prev => useItem(prev, 'doomshroom'))
+    }
 
     setPhase('fighting')
   }
@@ -101,6 +122,8 @@ function DefendMode({ gardenState, dispatch, onBack }) {
         if (!s.spawned && b.elapsed >= s.delay) {
           const zType = ZOMBIE_TYPES[s.type]
           const pos = randomSpawnPosition()
+          const isHypnotized = b.hypnotizeLeft > 0
+          if (isHypnotized) b.hypnotizeLeft--
           b.zombies.push({
             uid: uid(),
             type: s.type,
@@ -113,23 +136,74 @@ function DefendMode({ gardenState, dispatch, onBack }) {
             attacking: null,
             wobblePhase: Math.random() * Math.PI * 2,
             wobbleFreq: 2 + Math.random() * 1.5,
+            hasVaulted: false,
+            vaulting: false,
+            vaultProgress: 0,
+            vaultFrom: null,
+            vaultTo: null,
+            hypnotized: isHypnotized,
           })
           s.spawned = true
         }
       })
 
+      // Hypnotized zombies attack other zombies
+      b.zombies.forEach(z => {
+        if (z.hp <= 0 || !z.hypnotized) return
+        // Find closest non-hypnotized zombie and deal damage
+        let closestEnemy = null
+        let closestD = 8
+        b.zombies.forEach(z2 => {
+          if (z2.hp <= 0 || z2.hypnotized || z2 === z) return
+          const d = dist({ x: z.x, y: z.y }, { x: z2.x, y: z2.y })
+          if (d < closestD) { closestD = d; closestEnemy = z2 }
+        })
+        if (closestEnemy) {
+          closestEnemy.hp -= z.damage * delta * 3 // hypnotized zombies fight hard
+          return
+        }
+        // Move toward closest non-hypnotized zombie
+        let target = null
+        let targetD = Infinity
+        b.zombies.forEach(z2 => {
+          if (z2.hp <= 0 || z2.hypnotized || z2 === z) return
+          const d = dist({ x: z.x, y: z.y }, { x: z2.x, y: z2.y })
+          if (d < targetD) { targetD = d; target = z2 }
+        })
+        if (target) {
+          const dx = target.x - z.x
+          const dy = target.y - z.y
+          const d = Math.sqrt(dx * dx + dy * dy)
+          if (d > 0.5) {
+            z.x += (dx / d) * z.speed * delta
+            z.y += (dy / d) * z.speed * delta
+          }
+        }
+      })
+
       // Move zombies toward center (or attack plant in range)
       b.zombies.forEach(z => {
-        if (z.hp <= 0) return
+        if (z.hp <= 0 || z.hypnotized) return
+
+        // Newspaper zombie: when HP drops to 10 or below, newspaper breaks — speed up
+        if (z.type === 'newspaper' && !z.newspaperBroken && z.hp <= 10) {
+          z.newspaperBroken = true
+          z.speed = ZOMBIE_TYPES.basic.speed // enraged, moves at normal zombie speed
+        }
 
         // Restore speed if slow has expired
         if (z.slowUntil && b.elapsed >= z.slowUntil) {
-          z.speed = ZOMBIE_TYPES[z.type].speed
+          z.speed = z.type === 'newspaper' && z.newspaperBroken
+            ? ZOMBIE_TYPES.basic.speed
+            : ZOMBIE_TYPES[z.type].speed
           z.slowUntil = null
         }
 
         // Global freeze (from freeze item)
         if (b.freezeUntil && b.elapsed < b.freezeUntil) return
+
+        // Per-zombie butter freeze
+        if (z.butterFrozenUntil && b.elapsed < z.butterFrozenUntil) return
 
         // Check if zombie is attacking a plant
         if (z.attacking) {
@@ -143,6 +217,28 @@ function DefendMode({ gardenState, dispatch, onBack }) {
           }
         }
 
+        // Pole vaulter: mid-jump animation
+        if (z.vaulting) {
+          z.vaultProgress += delta * 2.5 // jump takes ~0.4s
+          if (z.vaultProgress >= 1) {
+            z.x = z.vaultTo.x
+            z.y = z.vaultTo.y
+            z.vaulting = false
+            z.vaultProgress = 0
+            z.vaultFrom = null
+            z.vaultTo = null
+            // Drop HP to 10 after losing the pole
+            z.hp = Math.min(z.hp, 10)
+            z.maxHp = 10
+          } else {
+            // Interpolate position along the arc
+            const t = z.vaultProgress
+            z.x = z.vaultFrom.x + (z.vaultTo.x - z.vaultFrom.x) * t
+            z.y = z.vaultFrom.y + (z.vaultTo.y - z.vaultFrom.y) * t
+          }
+          return // skip normal movement while vaulting
+        }
+
         // Find closest plant in path (within 5 units)
         let closestPlant = null
         let closestDist = 5
@@ -154,6 +250,23 @@ function DefendMode({ gardenState, dispatch, onBack }) {
             closestPlant = p
           }
         })
+
+        // Pole vaulter: jump over first plant encountered instead of attacking
+        if (closestPlant && z.type === 'polevaulter' && !z.hasVaulted) {
+          z.hasVaulted = true
+          z.vaulting = true
+          z.vaultProgress = 0
+          z.vaultFrom = { x: z.x, y: z.y }
+          // Land 10 units past the plant, toward the center
+          const dx = CENTER.x - closestPlant.position.x
+          const dy = CENTER.y - closestPlant.position.y
+          const d = Math.sqrt(dx * dx + dy * dy) || 1
+          z.vaultTo = {
+            x: closestPlant.position.x + (dx / d) * 10,
+            y: closestPlant.position.y + (dy / d) * 10,
+          }
+          return
+        }
 
         if (closestPlant) {
           z.attacking = closestPlant.uid
@@ -224,17 +337,23 @@ function DefendMode({ gardenState, dispatch, onBack }) {
               const dy = target.y - p.position.y
               const d = Math.sqrt(dx * dx + dy * dy)
               const shots = stats.shotsPerVolley || 1
+              const isPult = p.type === 'kernelpult' || p.type === 'cabbagepult'
+              const speed = isPult ? 40 : 60
               for (let s = 0; s < shots; s++) {
+                const isButter = stats.butterChance && Math.random() < stats.butterChance
                 b.projectiles.push({
                   uid: uid(),
                   x: p.position.x,
                   y: p.position.y,
-                  vx: (dx / d) * 60 + (s > 0 ? (Math.random() - 0.5) * 5 : 0),
-                  vy: (dy / d) * 60 + (s > 0 ? (Math.random() - 0.5) * 5 : 0),
+                  vx: (dx / d) * speed + (s > 0 ? (Math.random() - 0.5) * 5 : 0),
+                  vy: (dy / d) * speed + (s > 0 ? (Math.random() - 0.5) * 5 : 0),
                   damage: stats.damage * (p.damageMultiplier || 1),
                   fromMutation: p.mutation,
                   slowEffect: stats.slowEffect || null,
                   isIce: p.type === 'snowpea',
+                  isButter: isButter,
+                  butterFreeze: isButter ? (stats.butterFreeze || 5) : 0,
+                  plantType: p.type,
                 })
               }
               p.lastFired = b.elapsed
@@ -299,6 +418,12 @@ function DefendMode({ gardenState, dispatch, onBack }) {
               z.slowUntil = b.elapsed + pj.slowEffect.duration
             }
 
+            // Kernel-pult butter: freeze zombie solid
+            if (pj.isButter) {
+              z.butterFrozenUntil = b.elapsed + pj.butterFreeze
+              z.attacking = null // stop attacking while frozen
+            }
+
             // Fire mutation: area damage
             if (pj.fromMutation === 'fire') {
               b.zombies.forEach(z2 => {
@@ -344,20 +469,55 @@ function DefendMode({ gardenState, dispatch, onBack }) {
       })
       b.plants = b.plants.filter(p => p.hp > 0)
 
+      // Shield buff: push zombies away from vault every 60 seconds
+      if (b.shieldNextAt !== null && b.elapsed >= b.shieldNextAt) {
+        const shielded = b.zombies.some(z => z.hp > 0 && !z.hypnotized && dist({ x: z.x, y: z.y }, CENTER) < VAULT_RADIUS + 5)
+        if (shielded) {
+          b.zombies.forEach(z => {
+            if (z.hp <= 0 || z.hypnotized) return
+            const d = dist({ x: z.x, y: z.y }, CENTER)
+            if (d < VAULT_RADIUS + 5) {
+              // Push away from center
+              const dx = z.x - CENTER.x
+              const dy = z.y - CENTER.y
+              const len = Math.sqrt(dx * dx + dy * dy) || 1
+              z.x += (dx / len) * 15
+              z.y += (dy / len) * 15
+              z.attacking = null
+            }
+          })
+          b.shieldNextAt = b.elapsed + 60
+          b.shieldTriggeredAt = b.elapsed
+        }
+      }
+
       // Check vault breach
-      const breach = b.zombies.some(z => dist({ x: z.x, y: z.y }, CENTER) < VAULT_RADIUS)
+      const breach = b.zombies.some(z => z.hp > 0 && !z.hypnotized && dist({ x: z.x, y: z.y }, CENTER) < VAULT_RADIUS)
       if (breach) {
-        b.status = 'lost'
-        setPhase('lost')
-        return
+        // Doom-shroom: kill all zombies instead of losing (one-time)
+        if (doomShroomActive && !doomShroomUsedRef.current) {
+          doomShroomUsedRef.current = true
+          b.zombies.forEach(z => { z.hp = 0 })
+          b.zombies = []
+          b.doomShroomTriggered = b.elapsed
+        } else {
+          b.status = 'lost'
+          setPhase('lost')
+          return
+        }
       }
 
       // Check win: all spawned and all dead
       const allSpawned = b.spawnQueue.every(s => s.spawned)
-      if (allSpawned && b.zombies.length === 0) {
+      const aliveNonHypno = b.zombies.filter(z => z.hp > 0 && !z.hypnotized)
+      if (allSpawned && aliveNonHypno.length === 0) {
+        // Remove any remaining hypnotized zombies too
+        b.zombies = []
         b.status = 'won'
         const wave = WAVES[waveIndex]
-        b.coinsEarned += wave.reward
+        let reward = wave.reward
+        if (b.doubleCoins) reward *= 2
+        b.coinsEarned += reward
         setPhase('won')
         return
       }
@@ -397,6 +557,7 @@ function DefendMode({ gardenState, dispatch, onBack }) {
       next = returnPlantsAfterBattle(next, surviving, fallen)
       return next
     })
+    setDoomShroomActive(false)
     onBack()
   }
 
@@ -420,7 +581,75 @@ function DefendMode({ gardenState, dispatch, onBack }) {
             </button>
           ))}
         </div>
+        {/* Doom-shroom toggle */}
+        {(gardenState.inventory?.doomshroom || 0) > 0 && (
+          <div className="doom-shroom-toggle">
+            <button
+              className={`minecraft-button ${doomShroomActive ? '' : 'secondary'}`}
+              onClick={() => setDoomShroomActive(!doomShroomActive)}
+              style={doomShroomActive ? { background: '#6A1B9A' } : {}}
+            >
+              ☠️ Doom-shroom {doomShroomActive ? 'ON' : 'OFF'}
+              <span style={{ fontSize: '0.65rem', display: 'block' }}>
+                {doomShroomActive ? 'Will save you if zombies breach!' : 'Tap to activate (1 use)'}
+              </span>
+            </button>
+            <span className="doom-shroom-count">×{gardenState.inventory.doomshroom}</span>
+          </div>
+        )}
+
         <button className="minecraft-button secondary" onClick={onBack}>← Back to Garden</button>
+      </div>
+    )
+  }
+
+  // Buff selection
+  if (phase === 'buff') {
+    return (
+      <div className="battle-select">
+        <h2>Choose a Buff</h2>
+        <p className="battle-subtitle">Pick one power-up for this battle!</p>
+        <div className="buff-list">
+          <button
+            className={`minecraft-button buff-btn ${activeBuff === 'hypnotize' ? 'buff-selected' : ''}`}
+            onClick={() => setActiveBuff(activeBuff === 'hypnotize' ? null : 'hypnotize')}
+            style={activeBuff === 'hypnotize' ? { background: '#6A1B9A' } : {}}
+          >
+            <span className="buff-icon">🧟‍♂️</span>
+            <span className="buff-info">
+              <strong>Hypnotize</strong>
+              <span>First 3 zombies fight for you!</span>
+            </span>
+          </button>
+          <button
+            className={`minecraft-button buff-btn ${activeBuff === 'shield' ? 'buff-selected' : ''}`}
+            onClick={() => setActiveBuff(activeBuff === 'shield' ? null : 'shield')}
+            style={activeBuff === 'shield' ? { background: '#1565C0' } : {}}
+          >
+            <span className="buff-icon">🛡️</span>
+            <span className="buff-info">
+              <strong>Dave's Shield</strong>
+              <span>Pushes zombies away from vault every 60s</span>
+            </span>
+          </button>
+          <button
+            className={`minecraft-button buff-btn ${activeBuff === 'doublecoins' ? 'buff-selected' : ''}`}
+            onClick={() => setActiveBuff(activeBuff === 'doublecoins' ? null : 'doublecoins')}
+            style={activeBuff === 'doublecoins' ? { background: '#F9A825' } : {}}
+          >
+            <span className="buff-icon">🪙</span>
+            <span className="buff-info">
+              <strong>Double Coins</strong>
+              <span>2× coin reward when you win!</span>
+            </span>
+          </button>
+        </div>
+        <button className="minecraft-button" onClick={() => startBattle()} style={{ marginTop: '0.5rem' }}>
+          ⚔️ Start Wave {WAVES[pendingWaveIdx]?.wave}!
+        </button>
+        <button className="minecraft-button secondary" onClick={() => setPhase('select')} style={{ marginTop: '0.3rem' }}>
+          ← Back
+        </button>
       </div>
     )
   }
@@ -534,7 +763,8 @@ function DefendMode({ gardenState, dispatch, onBack }) {
       <div className="battle-active">
         <div className="battle-hud">
           <span>Wave {WAVES[waveIndex].wave}</span>
-          <span>Zombies: {b.zombies.length}</span>
+          <span>🧟 {b.spawnQueue.filter(s => s.spawned).length - b.zombies.filter(z => z.hp > 0 && !z.hypnotized).length} / {b.spawnQueue.length} killed</span>
+          <span>⚔️ {b.zombies.filter(z => z.hp > 0 && !z.hypnotized).length} alive</span>
           <span>🪙 +{b.coinsEarned}</span>
         </div>
 
@@ -576,6 +806,12 @@ function DefendMode({ gardenState, dispatch, onBack }) {
               <div className="garden-center" style={{ left: `${vaultPos.x}%`, top: `${vaultPos.y}%` }} onClick={e => e.stopPropagation()}>
                 <CrazyDave size={36} animate />
                 <span className="garden-center-label">Seed Vault</span>
+                {b.shieldNextAt !== null && (
+                  <span className="vault-shield-indicator">🛡️</span>
+                )}
+                {b.shieldTriggeredAt && b.elapsed - b.shieldTriggeredAt < 1 && (
+                  <div className="battle-shield-pulse" />
+                )}
               </div>
             )
           })()}
@@ -608,14 +844,15 @@ function DefendMode({ gardenState, dispatch, onBack }) {
           {b.zombies.map(z => (
             <div
               key={z.uid}
-              className={`battle-entity battle-zombie-entity ${z.attacking ? 'battle-zombie-attacking' : ''} ${z.slowUntil && z.slowUntil > b.elapsed ? 'battle-zombie-slowed' : ''} ${isTargetingZombie ? 'battle-targetable-zombie' : ''}`}
+              className={`battle-entity battle-zombie-entity ${z.attacking ? 'battle-zombie-attacking' : ''} ${z.slowUntil && z.slowUntil > b.elapsed ? 'battle-zombie-slowed' : ''} ${z.butterFrozenUntil && z.butterFrozenUntil > b.elapsed ? 'battle-zombie-buttered' : ''} ${isTargetingZombie ? 'battle-targetable-zombie' : ''} ${z.vaulting ? 'battle-zombie-vaulting' : ''} ${z.hypnotized ? 'battle-zombie-hypnotized' : ''}`}
               style={{ left: `${z.x}%`, top: `${z.y}%` }}
               onClick={isTargetingZombie ? (e) => handleTargetClick('zombie', z, e) : undefined}
             >
-              <Zombie size={22} animate />
-              {z.type === 'cone' && <span className="zombie-hat zombie-cone">🔶</span>}
-              {z.type === 'bucket' && <span className="zombie-hat zombie-bucket">🪣</span>}
-              {z.type === 'flag' && <span className="zombie-hat zombie-flag">🚩</span>}
+              <Zombie size={22} animate variant={
+                z.type === 'polevaulter' ? (z.hasVaulted ? 'polevaulter_nopole' : 'polevaulter') :
+                z.type === 'newspaper' ? (z.newspaperBroken ? 'newspaper_broken' : 'newspaper') :
+                z.type
+              } />
               <div className="battle-hp-bar">
                 <div
                   className="battle-hp-fill battle-hp-red"
@@ -629,7 +866,7 @@ function DefendMode({ gardenState, dispatch, onBack }) {
           {b.projectiles.map(pj => (
             <div
               key={pj.uid}
-              className={`battle-pea ${pj.fromMutation === 'fire' ? 'battle-pea-fire' : ''} ${pj.isIce ? 'battle-pea-ice' : ''}`}
+              className={`battle-pea ${pj.fromMutation === 'fire' ? 'battle-pea-fire' : ''} ${pj.isIce ? 'battle-pea-ice' : ''} ${pj.isButter ? 'battle-pea-butter' : ''} ${pj.plantType === 'kernelpult' && !pj.isButter ? 'battle-pea-kernel' : ''} ${pj.plantType === 'cabbagepult' ? 'battle-pea-cabbage' : ''}`}
               style={{ left: `${pj.x}%`, top: `${pj.y}%` }}
             />
           ))}
@@ -656,6 +893,13 @@ function DefendMode({ gardenState, dispatch, onBack }) {
               CHOMP!
             </div>
           ))}
+
+          {/* Doom-shroom explosion */}
+          {b.doomShroomTriggered && b.elapsed - b.doomShroomTriggered < 1.5 && (
+            <div className="doom-shroom-explosion">
+              ☠️ DOOM! ☠️
+            </div>
+          )}
         </div>
       </div>
     )
